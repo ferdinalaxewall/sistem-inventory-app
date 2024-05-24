@@ -37,6 +37,7 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
     <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/libs/iziToast/css/iziToast.min.css') }}">
 
     <!-- Page CSS -->
 
@@ -102,6 +103,7 @@
 
     <!-- Vendors JS -->
     <script src="{{ asset('dashboard/assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/vendor/libs/iziToast/js/iziToast.min.js') }}"></script>
 
     <!-- Main JS -->
     <script src="{{ asset('dashboard/assets/js/main.js') }}"></script>

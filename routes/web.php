@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [DashboardController::class, 'index'])->name('index');
+
+Route::group([
+    'as' => 'auth.'
+], function () {
+    Route::get('/login', [AuthController::class, 'viewLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'storeLogin'])->name('store.login');
+});
+
 Route::group([
     'prefix' => 'dashboard',
     'as' => 'dashboard.'
