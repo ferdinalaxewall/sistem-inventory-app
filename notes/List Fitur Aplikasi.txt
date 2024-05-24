@@ -1,0 +1,35 @@
+Sistem Inventory App
+
+List Fitur:
+*Dashboard
+- Total Barang/Produk
+- Total Barang/Produk Masuk (Restok)
+- Total Transaksi
+- Grafik Transaksi Bulanan
+- Grafik Barang/Produk Masuk (Restok)
+
+*Transaksi
+- Barang Masuk
+- Transaksi Penjualan
+
+*Stok
+- Stok Barang
+
+*Master Data
+- Kategori Barang
+- Data Barang
+- User
+- Supplier
+- Pelanggan
+
+*Laporan
+- Laporan Barang Masuk (Restok)
+- Laporan Penjualan
+
+*Profil
+- Edit Profile
+
+*Autentikasi
+- Login
+- Registrasi
+- Verifikasi Email
