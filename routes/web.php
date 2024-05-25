@@ -8,6 +8,7 @@ use App\Http\Controllers\Dashboard\MasterData\Item\ItemController;
 use App\Http\Controllers\Dashboard\MasterData\SupplierController;
 use App\Http\Controllers\Dashboard\MasterData\User\AdminController;
 use App\Http\Controllers\Dashboard\MasterData\User\UserController;
+use App\Http\Controllers\Dashboard\Report\StockController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [DashboardController::class, 'index'])->name('index');
+Route::get('/', function () {
+    return redirect()->route('dashboard.index');
+});
 
 Route::group([
     'as' => 'auth.'
@@ -123,6 +126,18 @@ Route::group([
             Route::get('/edit/{uuid}', [SupplierController::class, 'edit'])->name('edit');
             Route::put('/update/{uuid}', [SupplierController::class, 'update'])->name('update');
             Route::delete('/delete/{uuid}', [SupplierController::class, 'delete'])->name('delete');
+        });
+    });
+
+    Route::group([
+        'prefix' => 'laporan',
+        'as' => 'report.'
+    ], function (){
+        Route::group([
+            'prefix' => 'stok',
+            'as' => 'stock.',
+        ], function () {
+            Route::get('/', [StockController::class, 'stockReport'])->name('index');
         });
     });
 });

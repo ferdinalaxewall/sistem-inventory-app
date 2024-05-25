@@ -69,10 +69,7 @@
         </li>
 
         <li class="menu-item @if(Route::is('dashboard.index')) active @endif">
-            <a
-                href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template/app-email.html"
-                target="_blank"
-                class="menu-link">
+            <a href="{{ route('dashboard.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-grid-alt"></i>
                 <div data-i18n="Dashboard">Dashboard</div>
             </a>
@@ -167,8 +164,8 @@
         </li>
         
         <!-- Stok Barang -->
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item @if(Route::is('dashboard.report.stock.*')) active @endif">
+            <a href="{{ route('dashboard.report.stock.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-notepad"></i>
                 <div data-i18n="Stok Barang">Stok Barang</div>
             </a>

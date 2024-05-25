@@ -13,7 +13,7 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $data = Item::latest()->get();
+        $data = Item::with('category')->latest()->get();
         return view('dashboard.pages.master-data.item.index', compact('data'));
     }
 
