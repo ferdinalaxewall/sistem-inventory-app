@@ -60,14 +60,14 @@ function resetAllValueInOneRow(rowElement) {
 }
 
 // Image Upload Preview
-function previewFile(input) {
+function previewFile(input, previewElementId) {
     var file = $(input).get(0).files[0];
 
     if (file) {
         var reader = new FileReader();
 
         reader.onload = function () {
-            $(input).parent().find("#previewImg").attr("src", reader.result);
+            $("#" + previewElementId).attr("src", reader.result);
         };
 
         reader.readAsDataURL(file);

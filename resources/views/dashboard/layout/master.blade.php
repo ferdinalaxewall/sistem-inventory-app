@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('dashboard/assets/css/demo.css') }}" />
     <link rel="stylesheet" href="{{ asset('dashboard/assets/css/custom.css') }}" />
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/css/pages/page-profile.css') }}">
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />

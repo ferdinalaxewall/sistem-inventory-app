@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Dashboard\DashboardController;
-use App\Http\Controllers\Dashboard\MasterData\CustomerController;
-use App\Http\Controllers\Dashboard\MasterData\Item\ItemCategoryController;
-use App\Http\Controllers\Dashboard\MasterData\Item\ItemController;
-use App\Http\Controllers\Dashboard\MasterData\SupplierController;
-use App\Http\Controllers\Dashboard\MasterData\User\AdminController;
-use App\Http\Controllers\Dashboard\MasterData\User\UserController;
-use App\Http\Controllers\Dashboard\Report\StockController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Dashboard\ProfileController;
+use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\Report\StockController;
+use App\Http\Controllers\Dashboard\MasterData\CustomerController;
+use App\Http\Controllers\Dashboard\MasterData\SupplierController;
+use App\Http\Controllers\Dashboard\MasterData\Item\ItemController;
+use App\Http\Controllers\Dashboard\MasterData\User\UserController;
+use App\Http\Controllers\Dashboard\MasterData\User\AdminController;
+use App\Http\Controllers\Dashboard\MasterData\Item\ItemCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,8 @@ Route::group([
     'middleware' => 'auth'
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
+    Route::get('/profil-saya', [ProfileController::class, 'index'])->name('profile.index');
+    Route::post('/profil-saya', [ProfileController::class, 'update'])->name("profile.update");
 
     Route::group([
         'prefix' => 'master-data'
