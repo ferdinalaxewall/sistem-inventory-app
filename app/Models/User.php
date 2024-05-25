@@ -45,4 +45,9 @@ class User extends Authenticatable
 
     const ADMIN_PREFIX_CODE = 'ADM';
     const USER_PREFIX_CODE = 'USR';
+
+    public function scopeIsActive($query)
+    {
+        return $query->whereNotNull('email_verified_at');
+    }
 }

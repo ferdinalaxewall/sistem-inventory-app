@@ -18,6 +18,7 @@ return [
     'throttle' => 'Terlalu banyak percobaan login. Mohon untuk mencoba kembali dalam :seconds detik.',
     
     'success_login' => 'Log In Berhasil',
+    'failed_login' => 'Log In Gagal',
     'wrong_password' => 'Password Salah, Silahkan Cek Kembali Password Anda!',
 
     'registered' => 'Akun Berhasil Terdaftar, Silahkan Verifikasi Akun Anda!',

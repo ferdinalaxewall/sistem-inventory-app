@@ -23,11 +23,14 @@ Route::group([
 ], function () {
     Route::get('/login', [AuthController::class, 'viewLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'storeLogin'])->name('store.login');
+
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 Route::group([
     'prefix' => 'dashboard',
-    'as' => 'dashboard.'
+    'as' => 'dashboard.',
+    'middleware' => 'auth'
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
 });

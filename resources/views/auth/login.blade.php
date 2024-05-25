@@ -35,7 +35,8 @@
     <link rel="stylesheet" href="{{ asset('dashboard/assets/css/demo.css') }}" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.cs') }}s" />
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/libs/iziToast/css/iziToast.min.css') }}">
 
     <!-- Page CSS -->
     <!-- Page -->
@@ -122,12 +123,18 @@
                                 <label for="email" class="form-label">Email</label>
                                 <input
                                     type="email"
-                                    class="form-control"
+                                    class="form-control @error('email') is-invalid @enderror"
                                     id="email"
                                     name="email"
                                     placeholder="Masukkan Email"
+                                    value="{{ old('email') }}"
                                     autofocus
                                     required />
+                                @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="mb-3 form-password-toggle">
                                 <div class="d-flex justify-content-between">
@@ -186,11 +193,14 @@
     <!-- endbuild -->
 
     <!-- Vendors JS -->
+    <script src="{{ asset('dashboard/assets/vendor/libs/iziToast/js/iziToast.min.js') }}"></script>
 
     <!-- Main JS -->
     <script src="{{ asset('dashboard/assets/js/main.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/custom.js') }}"></script>
 
     <!-- Page JS -->
+    @include('dashboard.components.notification')
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>

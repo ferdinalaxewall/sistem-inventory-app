@@ -18,6 +18,7 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     
     'success_login' => 'Successfully Log In',
+    'failed_login' => 'Failed to Log In',
     'wrong_password' => 'Incorrect password, please check your password again!',
 
     'registered' => 'Account Successfully Registered, Please Verify Your Account!',
