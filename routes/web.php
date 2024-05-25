@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\MasterData\CustomerController;
 use App\Http\Controllers\Dashboard\MasterData\Item\ItemCategoryController;
+use App\Http\Controllers\Dashboard\MasterData\Item\ItemController;
 use App\Http\Controllers\Dashboard\MasterData\SupplierController;
 use App\Http\Controllers\Dashboard\MasterData\User\AdminController;
 use App\Http\Controllers\Dashboard\MasterData\User\UserController;
@@ -76,6 +77,16 @@ Route::group([
             'prefix' => 'barang',
             'as' => 'items.' 
         ], function () {
+            Route::group([
+                'as' => 'item.'
+            ], function () {
+                Route::get('/', [ItemController::class, 'index'])->name('index');
+                Route::get('/create', [ItemController::class, 'create'])->name('create');
+                Route::post('/', [ItemController::class, 'store'])->name('store');
+                Route::get('/edit/{uuid}', [ItemController::class, 'edit'])->name('edit');
+                Route::put('/update/{uuid}', [ItemController::class, 'update'])->name('update');
+                Route::delete('/delete/{uuid}', [ItemController::class, 'delete'])->name('delete');
+            });
 
             Route::group([
                 'prefix' => 'kategori-barang',

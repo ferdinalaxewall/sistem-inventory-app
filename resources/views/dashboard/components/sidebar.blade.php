@@ -119,7 +119,7 @@
                 </li>
 
                 <li class="menu-item @if(Route::is('dashboard.items.item.*')) active @endif">
-                    <a href="#" class="menu-link">
+                    <a href="{{ route('dashboard.items.item.index') }}" class="menu-link">
                         <div data-i18n="Data Barang">Data Barang</div>
                     </a>
                 </li>
