@@ -96,7 +96,7 @@
                     </a>
                 </li>
 
-                <li class="menu-item">
+                <li class="menu-item @if(Route::is(('dashboard.users.user.*'))) active @endif">
                     <a href="{{ route('dashboard.users.user.index') }}" class="menu-link">
                         <div data-i18n="Pengguna">Pengguna</div>
                     </a>
