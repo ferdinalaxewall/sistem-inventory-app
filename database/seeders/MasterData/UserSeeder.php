@@ -17,13 +17,7 @@ class UserSeeder extends Seeder
     {
         \App\Models\User::create([
             'name' => 'Super Admin',
-            'code' => IdGenerator::generate([
-                'table' => 'users',
-                'field' => 'code',
-                'length' => 15,
-                'prefix' => User::ADMIN_PREFIX_CODE . '-' . now()->format('dmy') . '-',
-                'reset_on_prefix_change' => true
-            ]),
+            'code' => (new User)->generateUniqueCode(USER::ADMIN_PREFIX_CODE),
             'email' => 'admin@example.com',
             'phone' => '081122334455',
             'address' => 'Bogor, Indonesia',

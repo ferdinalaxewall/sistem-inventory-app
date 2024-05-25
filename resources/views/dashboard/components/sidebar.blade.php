@@ -68,7 +68,7 @@
             <span class="menu-header-text">Dashboard</span>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item @if(Route::is('dashboard.index')) active @endif">
             <a
                 href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template/app-email.html"
                 target="_blank"
@@ -83,21 +83,21 @@
         </li>
         
         <!-- Users -->
-        <li class="menu-item">
+        <li class="menu-item @if(Route::is('dashboard.users.*')) active open @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-group"></i>
                 <div data-i18n="Users">Users</div>
             </a>
 
             <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
+                <li class="menu-item @if(Route::is(('dashboard.users.administrator.*'))) active @endif">
+                    <a href="{{ route('dashboard.users.administrator.index') }}" class="menu-link">
                         <div data-i18n="Administrator">Administrator</div>
                     </a>
                 </li>
 
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="{{ route('dashboard.users.user.index') }}" class="menu-link">
                         <div data-i18n="Pengguna">Pengguna</div>
                     </a>
                 </li>

@@ -12,6 +12,7 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name') }} - @yield('title')</title>
 
@@ -33,11 +34,18 @@
     <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/css/core.css') }}" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('dashboard/assets/css/demo.css') }}" />
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/css/custom.css') }}" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
     <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
     <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/libs/iziToast/css/iziToast.min.css') }}">
+
+    {{-- Datatables CSS --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    
+    {{-- Select2 CSS --}}
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/vendor/libs/select2/css/select2.min.css') }}">
 
     <!-- Page CSS -->
 
@@ -104,6 +112,10 @@
     <!-- Vendors JS -->
     <script src="{{ asset('dashboard/assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
     <script src="{{ asset('dashboard/assets/vendor/libs/iziToast/js/iziToast.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+    {{-- Select2 JS --}}
+    <script src="{{ asset('dashboard/assets/vendor/libs/select2/js/select2.full.min.js') }}"></script>
 
     <!-- Main JS -->
     <script src="{{ asset('dashboard/assets/js/main.js') }}"></script>
