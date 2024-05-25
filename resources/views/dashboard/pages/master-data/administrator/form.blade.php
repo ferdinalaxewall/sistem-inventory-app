@@ -1,5 +1,5 @@
 @extends('dashboard.layout.master')
-@section('title', 'Administrator')
+@section('title', $title)
 
 @section('content')
     <!-- Form Administrator -->

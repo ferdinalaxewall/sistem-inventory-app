@@ -105,20 +105,20 @@
         </li>
         
         <!-- Barang -->
-        <li class="menu-item">
+        <li class="menu-item @if(Route::is('dashboard.items.*')) active open @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-package"></i>
                 <div data-i18n="Barang">Barang</div>
             </a>
 
             <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div data-i18n="Kategori barang">Kategori barang</div>
+                <li class="menu-item @if(Route::is('dashboard.items.category.*')) active @endif">
+                    <a href="{{ route('dashboard.items.category.index') }}" class="menu-link">
+                        <div data-i18n="Kategori barang">Kategori Barang</div>
                     </a>
                 </li>
 
-                <li class="menu-item">
+                <li class="menu-item @if(Route::is('dashboard.items.item.*')) active @endif">
                     <a href="#" class="menu-link">
                         <div data-i18n="Data Barang">Data Barang</div>
                     </a>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\MasterData\Item\ItemCategoryController;
 use App\Http\Controllers\Dashboard\MasterData\User\AdminController;
 use App\Http\Controllers\Dashboard\MasterData\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -67,7 +68,24 @@ Route::group([
                 Route::put('/update/{uuid}', [UserController::class, 'update'])->name('update');
                 Route::delete('/delete/{uuid}', [UserController::class, 'delete'])->name('delete');
             });
+        });
 
+        Route::group([
+            'prefix' => 'barang',
+            'as' => 'items.' 
+        ], function () {
+
+            Route::group([
+                'prefix' => 'kategori-barang',
+                'as' => 'category.'
+            ], function () {
+                Route::get('/', [ItemCategoryController::class, 'index'])->name('index');
+                Route::get('/create', [ItemCategoryController::class, 'create'])->name('create');
+                Route::post('/', [ItemCategoryController::class, 'store'])->name('store');
+                Route::get('/edit/{uuid}', [ItemCategoryController::class, 'edit'])->name('edit');
+                Route::put('/update/{uuid}', [ItemCategoryController::class, 'update'])->name('update');
+                Route::delete('/delete/{uuid}', [ItemCategoryController::class, 'delete'])->name('delete');
+            });
         });
     });
 });
