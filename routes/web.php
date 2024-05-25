@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\MasterData\CustomerController;
 use App\Http\Controllers\Dashboard\MasterData\Item\ItemCategoryController;
 use App\Http\Controllers\Dashboard\MasterData\User\AdminController;
 use App\Http\Controllers\Dashboard\MasterData\User\UserController;
@@ -86,6 +87,18 @@ Route::group([
                 Route::put('/update/{uuid}', [ItemCategoryController::class, 'update'])->name('update');
                 Route::delete('/delete/{uuid}', [ItemCategoryController::class, 'delete'])->name('delete');
             });
+        });
+
+        Route::group([
+            'prefix' => 'customer',
+            'as' => 'customer.'
+        ], function () {
+            Route::get('/', [CustomerController::class, 'index'])->name('index');
+            Route::get('/create', [CustomerController::class, 'create'])->name('create');
+            Route::post('/', [CustomerController::class, 'store'])->name('store');
+            Route::get('/edit/{uuid}', [CustomerController::class, 'edit'])->name('edit');
+            Route::put('/update/{uuid}', [CustomerController::class, 'update'])->name('update');
+            Route::delete('/delete/{uuid}', [CustomerController::class, 'delete'])->name('delete');
         });
     });
 });

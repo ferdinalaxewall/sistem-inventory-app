@@ -1,8 +1,8 @@
 @extends('dashboard.layout.master')
-@section('title', 'Administrator')
+@section('title', $title)
 
 @section('content')
-    <!-- Form Administrator -->
+    <!-- Form Kategori Barang -->
     <div class="card">
         <div class="d-flex align-items-center justify-content-between pe-4">
             <h5 class="card-header mb-0">{{ $title }}</h5>
@@ -28,5 +28,5 @@
             </form>
         </div>
     </div>
-    <!-- End Form Administrator -->
+    <!-- End Form Kategori Barang -->
 @endsection

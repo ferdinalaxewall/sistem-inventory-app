@@ -135,8 +135,8 @@
         </li>
         
         <!-- Pelanggan -->
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item @if(Route::is('dashboard.customer.*')) active @endif">
+            <a href="{{ route('dashboard.customer.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user-pin"></i>
                 <div data-i18n="Pelanggan">Pelanggan</div>
             </a>
