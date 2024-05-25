@@ -127,8 +127,8 @@
         </li>
         
         <!-- Supplier -->
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item @if(Route::is('dashboard.supplier.*')) active @endif">
+            <a href="{{ route('dashboard.supplier.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-account"></i>
                 <div data-i18n="Supplier">Supplier</div>
             </a>

@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\MasterData\CustomerController;
 use App\Http\Controllers\Dashboard\MasterData\Item\ItemCategoryController;
+use App\Http\Controllers\Dashboard\MasterData\SupplierController;
 use App\Http\Controllers\Dashboard\MasterData\User\AdminController;
 use App\Http\Controllers\Dashboard\MasterData\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -99,6 +100,18 @@ Route::group([
             Route::get('/edit/{uuid}', [CustomerController::class, 'edit'])->name('edit');
             Route::put('/update/{uuid}', [CustomerController::class, 'update'])->name('update');
             Route::delete('/delete/{uuid}', [CustomerController::class, 'delete'])->name('delete');
+        });
+
+        Route::group([
+            'prefix' => 'supplier',
+            'as' => 'supplier.'
+        ], function () {
+            Route::get('/', [SupplierController::class, 'index'])->name('index');
+            Route::get('/create', [SupplierController::class, 'create'])->name('create');
+            Route::post('/', [SupplierController::class, 'store'])->name('store');
+            Route::get('/edit/{uuid}', [SupplierController::class, 'edit'])->name('edit');
+            Route::put('/update/{uuid}', [SupplierController::class, 'update'])->name('update');
+            Route::delete('/delete/{uuid}', [SupplierController::class, 'delete'])->name('delete');
         });
     });
 });
