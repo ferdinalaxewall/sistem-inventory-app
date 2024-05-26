@@ -152,8 +152,8 @@
         </li>
 
         <!-- Transaksi Penjualan -->
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item @if(Route::is('dashboard.transaction.sale.*')) active @endif">
+            <a href="{{ route('dashboard.transaction.sale.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-up-arrow-circle"></i>
                 <div data-i18n="Transaksi Penjualan">Transaksi Penjualan</div>
             </a>

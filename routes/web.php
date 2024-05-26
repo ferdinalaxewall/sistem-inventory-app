@@ -5,14 +5,15 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Report\StockController;
+use App\Http\Controllers\Dashboard\Transaction\SaleController;
 use App\Http\Controllers\Dashboard\MasterData\CustomerController;
 use App\Http\Controllers\Dashboard\MasterData\SupplierController;
 use App\Http\Controllers\Dashboard\MasterData\Item\ItemController;
 use App\Http\Controllers\Dashboard\MasterData\User\UserController;
 use App\Http\Controllers\Dashboard\MasterData\User\AdminController;
-use App\Http\Controllers\Dashboard\MasterData\Item\ItemCategoryController;
-use App\Http\Controllers\Dashboard\Report\ReportIncomingGoodsController;
 use App\Http\Controllers\Dashboard\Transaction\IncomingGoodsController;
+use App\Http\Controllers\Dashboard\Report\ReportIncomingGoodsController;
+use App\Http\Controllers\Dashboard\MasterData\Item\ItemCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -146,6 +147,16 @@ Route::group([
             Route::get('/create', [IncomingGoodsController::class, 'create'])->name('create');
             Route::post('/', [IncomingGoodsController::class, 'store'])->name('store');
             Route::delete('/delete/{uuid}', [IncomingGoodsController::class, 'delete'])->name('delete');
+        });
+
+        Route::group([
+            'prefix' => 'transaksi-penjualan',
+            'as' => 'sale.'
+        ], function () {
+            Route::get('/', [SaleController::class, 'index'])->name('index');
+            Route::get('/create', [SaleController::class, 'create'])->name('create');
+            Route::post('/', [SaleController::class, 'store'])->name('store');
+            Route::delete('/delete/{uuid}', [SaleController::class, 'delete'])->name('delete');
         });
     });
 
