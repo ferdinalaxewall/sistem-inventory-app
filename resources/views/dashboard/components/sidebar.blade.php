@@ -144,8 +144,8 @@
         </li>
         
         <!-- Barang Masuk -->
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item @if(Route::is('dashboard.transaction.incoming.*')) active @endif">
+            <a href="{{ route('dashboard.transaction.incoming.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-down-arrow-circle"></i>
                 <div data-i18n="Barang Masuk">Barang Masuk</div>
             </a>

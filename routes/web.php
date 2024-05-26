@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\MasterData\Item\ItemController;
 use App\Http\Controllers\Dashboard\MasterData\User\UserController;
 use App\Http\Controllers\Dashboard\MasterData\User\AdminController;
 use App\Http\Controllers\Dashboard\MasterData\Item\ItemCategoryController;
+use App\Http\Controllers\Dashboard\Transaction\IncomingGoodsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -129,6 +130,21 @@ Route::group([
             Route::get('/edit/{uuid}', [SupplierController::class, 'edit'])->name('edit');
             Route::put('/update/{uuid}', [SupplierController::class, 'update'])->name('update');
             Route::delete('/delete/{uuid}', [SupplierController::class, 'delete'])->name('delete');
+        });
+    });
+
+    Route::group([
+        'prefix' => 'transaksi',
+        'as' => 'transaction.'
+    ], function () {
+        Route::group([
+            'prefix' => 'barang-masuk',
+            'as' => 'incoming.'
+        ], function () {
+            Route::get('/', [IncomingGoodsController::class, 'index'])->name('index');
+            Route::get('/create', [IncomingGoodsController::class, 'create'])->name('create');
+            Route::post('/', [IncomingGoodsController::class, 'store'])->name('store');
+            Route::delete('/delete/{uuid}', [IncomingGoodsController::class, 'delete'])->name('delete');
         });
     });
 

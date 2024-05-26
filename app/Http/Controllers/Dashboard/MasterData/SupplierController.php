@@ -68,7 +68,7 @@ class SupplierController extends Controller
             Supplier::where('uuid', $uuid)->delete();
             return redirect()->route('dashboard.supplier.index')->with('toastSuccess', __('crud.deleted', ['name' => 'Supplier']));
         } catch (\Throwable $th) {
-            return redirect()->route('dashboard.supplier.edit', $uuid)->with('toastError', __('crud.error_delete', ['name' => 'Supplier']))->withInput();
+            return redirect()->route('dashboard.supplier.index', $uuid)->with('toastError', __('crud.error_delete', ['name' => 'Supplier']))->withInput();
         }
     }
 }
