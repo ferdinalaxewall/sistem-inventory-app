@@ -172,8 +172,8 @@
         </li>
 
         <!-- Laporan Barang Masuk -->
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item @if(Route::is('dashboard.report.incoming.*')) active @endif">
+            <a href="{{ route('dashboard.report.incoming.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-report"></i>
                 <div data-i18n="Laporan Barang Masuk">Laporan Barang Masuk</div>
             </a>

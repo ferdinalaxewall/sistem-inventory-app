@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\MasterData\Item\ItemController;
 use App\Http\Controllers\Dashboard\MasterData\User\UserController;
 use App\Http\Controllers\Dashboard\MasterData\User\AdminController;
 use App\Http\Controllers\Dashboard\MasterData\Item\ItemCategoryController;
+use App\Http\Controllers\Dashboard\Report\ReportIncomingGoodsController;
 use App\Http\Controllers\Dashboard\Transaction\IncomingGoodsController;
 
 /*
@@ -157,6 +158,13 @@ Route::group([
             'as' => 'stock.',
         ], function () {
             Route::get('/', [StockController::class, 'stockReport'])->name('index');
+        });
+
+        Route::group([
+            'prefix' => 'barang-masuk',
+            'as' => 'incoming.',
+        ], function () {
+            Route::get('/', [ReportIncomingGoodsController::class, 'incomingReport'])->name('index');
         });
     });
 });
