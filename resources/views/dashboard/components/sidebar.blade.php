@@ -180,8 +180,8 @@
         </li>
 
         <!-- Laporan Penjualan -->
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item @if(Route::is('dashboard.report.sale.*')) active @endif">
+            <a href="{{ route('dashboard.report.sale.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-report"></i>
                 <div data-i18n="Laporan Penjualan">Laporan Penjualan</div>
             </a>

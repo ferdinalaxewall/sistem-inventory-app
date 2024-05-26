@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Report\StockController;
 use App\Http\Controllers\Dashboard\Transaction\SaleController;
+use App\Http\Controllers\Dashboard\Report\ReportSaleController;
 use App\Http\Controllers\Dashboard\MasterData\CustomerController;
 use App\Http\Controllers\Dashboard\MasterData\SupplierController;
 use App\Http\Controllers\Dashboard\MasterData\Item\ItemController;
@@ -176,6 +177,13 @@ Route::group([
             'as' => 'incoming.',
         ], function () {
             Route::get('/', [ReportIncomingGoodsController::class, 'incomingReport'])->name('index');
+        });
+
+        Route::group([
+            'prefix' => 'transaksi-penjualan',
+            'as' => 'sale.',
+        ], function () {
+            Route::get('/', [ReportSaleController::class, 'saleReport'])->name('index');
         });
     });
 });
