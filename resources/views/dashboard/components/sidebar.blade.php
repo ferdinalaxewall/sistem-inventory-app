@@ -79,6 +79,7 @@
             <span class="menu-header-text">Master Data</span>
         </li>
         
+        @role('admin')
         <!-- Users -->
         <li class="menu-item @if(Route::is('dashboard.users.*')) active open @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -100,6 +101,7 @@
                 </li>
             </ul>
         </li>
+        @endrole
         
         <!-- Barang -->
         <li class="menu-item @if(Route::is('dashboard.items.*')) active open @endif">
