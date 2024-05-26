@@ -19,7 +19,7 @@
             <thead>
                 <tr>
                     <th>Kode</th>
-                    <th>Customer</th>
+                    <th>Pelanggan</th>
                     <th>Barang</th>
                     <th>Jumlah (QTY)</th>
                     <th>Tanggal</th>

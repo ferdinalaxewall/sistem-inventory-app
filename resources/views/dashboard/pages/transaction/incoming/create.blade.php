@@ -18,6 +18,9 @@
                             <option value="{{ $supplier->uuid }}" @selected(old('supplier_id') == $supplier->uuid)>{{ $supplier->name }}</option>
                         @endforeach
                     </select>
+                    <i class="d-block">
+                        <small>*Kosongkan saja jika tidak ada supplier</small>
+                    </i>
                     @error('supplier_id')
                     <div class="invalid-feedback">
                         {{ $message }}

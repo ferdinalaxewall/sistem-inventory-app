@@ -14,6 +14,9 @@
                 <div class="col-12 mb-3">
                     <label for="code" class="form-label">Kode/SKU</label>
                     <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" value="{{ old('code', $data?->code) }}" placeholder="Masukkan Kode/SKU Barang" @disabled($method == 'PUT')>
+                    <i class="d-block">
+                        <small>*Kosongkan untuk generate kode otomatis</small>
+                    </i>
                     @error('code')
                     <div class="invalid-feedback">
                         {{ $message }}

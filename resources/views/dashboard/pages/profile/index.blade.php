@@ -65,6 +65,9 @@
             <div class="col-md-6 mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Masukkan Password">
+                <i class="d-block">
+                    <small>*Kosongkan jika tidak ingin mengganti password</small>
+                </i>
                 @error('password')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -72,6 +75,9 @@
             <div class="col-md-6 mb-3">
                 <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
                 <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password_confirmation" placeholder="Konfirmasi Password">
+                <i class="d-block">
+                    <small>*Kosongkan jika tidak ingin mengganti password</small>
+                </i>
                 @error('password_confirmation')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -79,6 +85,9 @@
             <div class="col-md-12 mb-3">
                 <label for="image" class="form-label">Foto Profil</label>
                 <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror" onchange="previewFile(this, 'avatar-profile')" accept="image/*">
+                <i class="d-block">
+                    <small>*Kosongkan jika tidak ingin mengganti foto profil</small>
+                </i>
                 @error('image')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

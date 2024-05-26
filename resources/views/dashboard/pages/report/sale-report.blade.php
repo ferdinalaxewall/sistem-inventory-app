@@ -1,22 +1,22 @@
 @extends('dashboard.layout.master')
-@section('title', 'Laporan Trannsaksi Penjualan')
+@section('title', 'Laporan Transaksi Penjualan')
 
 @section('content')
 
-<!-- Tabel Laporan Trannsaksi Penjualan -->
+<!-- Tabel Laporan Transaksi Penjualan -->
 <div class="card">
     <div class="d-flex align-items-center justify-content-between pe-4  ">
-        <h5 class="card-header mb-0">Laporan Trannsaksi Penjualan</h5>
+        <h5 class="card-header mb-0">Laporan Transaksi Penjualan</h5>
     </div>
     <div class="table-responsive text-nowrap">
         <table class="table table-hover">
             <caption class="ms-4">
-                List Trannsaksi Penjualan
+                List Transaksi Penjualan
             </caption>
             <thead>
                 <tr>
-                    <th>Kode Trannsaksi</th>
-                    <th>Customer</th>
+                    <th>Kode Transaksi</th>
+                    <th>Pelanggan</th>
                     <th>Nama Barang</th>
                     <th>Jumlah</th>
                     <th>HPP</th>
@@ -40,5 +40,5 @@
         </table>
     </div>
 </div>
-<!-- End Tabel Laporan Trannsaksi Penjualan -->
+<!-- End Tabel Laporan Transaksi Penjualan -->
 @endsection

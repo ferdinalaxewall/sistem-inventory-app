@@ -11,13 +11,16 @@
             <form action="{{ route("dashboard.transaction.sale.store") }}" method="POST" class="row justify-content-start">
                 @csrf
                 <div class="col-12 mb-3">
-                    <label for="customer_id" class="form-label">Customer</label>
+                    <label for="customer_id" class="form-label">Pelanggan</label>
                     <select name="customer_id" id="customer_id" class="form-select select2 @error('customer_id') is-invalid @enderror">
-                        <option value="">Pilih Customer</option>
+                        <option value="">Pilih Pelanggan</option>
                         @foreach ($customers as $customer)
                             <option value="{{ $customer->uuid }}" @selected(old('customer_id') == $customer->uuid)>{{ "{$customer->name} [{$customer->code}]" }}</option>
                         @endforeach
                     </select>
+                    <i class="d-block">
+                        <small>*Kosongkan saja jika tidak ada pelanggan</small>
+                    </i>
                     @error('customer_id')
                     <div class="invalid-feedback">
                         {{ $message }}
