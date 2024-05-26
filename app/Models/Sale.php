@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\User;
 use App\Models\Customer;
 use App\Models\SaleItem;
+use App\Traits\Models\WithSecureScopeData;
 use App\Traits\Models\WithUuid;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Utilities\WithCodeGenerator;
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Sale extends Model
 {
-    use HasFactory, WithUuid, WithCodeGenerator;
+    use HasFactory, WithUuid, WithCodeGenerator, WithSecureScopeData;
 
     protected $guarded = [];
     const UNIQUE_CODE_PREFIX = 'SALE';

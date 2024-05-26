@@ -4,13 +4,14 @@ namespace App\Models;
 
 use App\Models\Item;
 use App\Models\IncomingGoods;
+use App\Traits\Models\WithSecureScopeData;
 use App\Traits\Models\WithUuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class IncomingGoodsItem extends Model
 {
-    use HasFactory, WithUuid;
+    use HasFactory, WithUuid, WithSecureScopeData;
 
     protected $guarded = [];
     protected $casts = [

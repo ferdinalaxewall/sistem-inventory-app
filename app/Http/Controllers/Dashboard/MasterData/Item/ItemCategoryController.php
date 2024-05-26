@@ -11,7 +11,7 @@ class ItemCategoryController extends Controller
 {
     public function index()
     {
-        $data = ItemCategory::latest()->get();
+        $data = ItemCategory::filterByUser()->latest()->get();
         return view('dashboard.pages.master-data.item-category.index', compact('data'));
     }
 

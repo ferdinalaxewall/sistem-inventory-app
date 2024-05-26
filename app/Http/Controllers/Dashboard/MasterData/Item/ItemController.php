@@ -13,7 +13,7 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $data = Item::with('category')->latest()->get();
+        $data = Item::with('category')->filterByUser()->latest()->get();
         return view('dashboard.pages.master-data.item.index', compact('data'));
     }
 
@@ -22,7 +22,7 @@ class ItemController extends Controller
         $title = 'Form Tambah Barang';
         $action_url = route('dashboard.items.item.store');
         $method = 'POST';
-        $categories = ItemCategory::orderBy('category_name', 'ASC')->get();
+        $categories = ItemCategory::filterByUser()->orderBy('category_name', 'ASC')->get();
         $data = new Item();
 
         return view('dashboard.pages.master-data.item.form', compact('title', 'action_url', 'method', 'data', 'categories'));
@@ -51,7 +51,7 @@ class ItemController extends Controller
         $title = 'Form Edit Barang';
         $action_url = route('dashboard.items.item.update', $uuid);
         $method = 'PUT';
-        $categories = ItemCategory::orderBy('category_name', 'ASC')->get();
+        $categories = ItemCategory::filterByUser()->orderBy('category_name', 'ASC')->get();
 
         return view('dashboard.pages.master-data.item.form', compact("data", 'title', 'action_url', 'method', 'categories'));
     }

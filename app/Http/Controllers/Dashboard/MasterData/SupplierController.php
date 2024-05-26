@@ -11,7 +11,7 @@ class SupplierController extends Controller
 {
     public function index()
     {
-        $data = Supplier::latest()->get();
+        $data = Supplier::filterByUser()->latest()->get();
         return view('dashboard.pages.master-data.supplier.index', compact('data'));
     }
 

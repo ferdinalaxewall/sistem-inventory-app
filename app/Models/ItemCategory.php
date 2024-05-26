@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Traits\Models\WithSecureScopeData;
 use App\Traits\Models\WithUuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ItemCategory extends Model
 {
-    use HasFactory, WithUuid;
+    use HasFactory, WithUuid, WithSecureScopeData;
 
     protected $guarded = [];
 

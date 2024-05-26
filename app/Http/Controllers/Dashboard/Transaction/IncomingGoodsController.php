@@ -14,14 +14,14 @@ class IncomingGoodsController extends Controller
 {
     public function index()
     {
-        $data = IncomingGoods::latest()->get();
+        $data = IncomingGoods::filterByUser()->latest()->get();
         return view('dashboard.pages.transaction.incoming.index', compact('data'));
     }
 
     public function create()
     {
-        $suppliers = Supplier::orderBy('name', 'ASC')->get();
-        $items = Item::orderBy('name', 'ASC')->get();
+        $suppliers = Supplier::filterByUser()->orderBy('name', 'ASC')->get();
+        $items = Item::filterByUser()->orderBy('name', 'ASC')->get();
 
         return view('dashboard.pages.transaction.incoming.create', compact('suppliers', 'items'));
     }   

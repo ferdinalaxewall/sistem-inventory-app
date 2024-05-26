@@ -10,7 +10,7 @@ class StockController extends Controller
 {
     public function stockReport()
     {
-        $data = Item::with('category')->orderBy('stock', 'ASC')->get();
+        $data = Item::with('category')->filterByUser()->orderBy('stock', 'ASC')->get();
         return view('dashboard.pages.report.stock-report', compact('data'));
     }
 }

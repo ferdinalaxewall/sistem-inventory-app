@@ -10,7 +10,7 @@ class ReportIncomingGoodsController extends Controller
 {
     public function incomingReport()
     {
-        $data = IncomingGoodsItem::with(['incomingGoods', 'item'])->orderBy('created_at', 'DESC')->get();
+        $data = IncomingGoodsItem::with(['incomingGoods', 'item'])->filterChainingByUser('incomingGoods')->orderBy('created_at', 'DESC')->get();
         return view('dashboard.pages.report.incoming-report', compact('data'));
     }
 }

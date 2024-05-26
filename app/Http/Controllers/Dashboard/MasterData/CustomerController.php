@@ -11,7 +11,7 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        $data = Customer::latest()->get();
+        $data = Customer::filterByUser()->latest()->get();
         return view('dashboard.pages.master-data.customer.index', compact('data'));
     }
 

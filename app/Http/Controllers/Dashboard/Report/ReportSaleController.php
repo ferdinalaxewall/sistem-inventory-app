@@ -10,7 +10,7 @@ class ReportSaleController extends Controller
 {
     public function saleReport()
     {
-        $data = SaleItem::with(['sale', 'item'])->orderBy('created_at', 'DESC')->get();
+        $data = SaleItem::with(['sale', 'item'])->filterChainingByUser('sale')->orderBy('created_at', 'DESC')->get();
         return view('dashboard.pages.report.sale-report', compact('data'));
     }
 }

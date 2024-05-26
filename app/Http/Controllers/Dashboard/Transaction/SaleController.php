@@ -16,14 +16,14 @@ class SaleController extends Controller
 {
     public function index()
     {
-        $data = Sale::latest()->get();
+        $data = Sale::filterByUser()->latest()->get();
         return view('dashboard.pages.transaction.sale.index', compact('data'));
     }
 
     public function create()
     {
-        $customers = Customer::orderBy('name', 'ASC')->get();
-        $items = Item::orderBy('name', 'ASC')->get();
+        $customers = Customer::filterByUser()->orderBy('name', 'ASC')->get();
+        $items = Item::filterByUser()->orderBy('name', 'ASC')->get();
 
         return view('dashboard.pages.transaction.sale.create', compact('customers', 'items'));
     }   
