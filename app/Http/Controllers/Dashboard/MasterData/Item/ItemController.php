@@ -38,7 +38,6 @@ class ItemController extends Controller
 
             return redirect()->route('dashboard.items.item.index')->with('toastSuccess', __('crud.created', ['name' => 'Barang']));
         } catch (\Throwable $th) {
-            dd($th);
             return redirect()->route('dashboard.items.item.create')->with('toastError', __('crud.error_create', ['name' => 'Barang']))->withInput();
         }
     }

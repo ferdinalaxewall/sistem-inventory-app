@@ -57,7 +57,6 @@ class IncomingGoodsController extends Controller
             return redirect()->route('dashboard.transaction.incoming.index')->with('toastSuccess', __('crud.created', ['name' => 'Barang Masuk']));
         } catch (\Throwable $th) {
             DB::rollBack();
-            dd($th);
             return redirect()->route('dashboard.transaction.incoming.create')->with('toastError', __('crud.error_create', ['name' => 'Barang Masuk']))->withInput();
         }
     }
@@ -85,7 +84,6 @@ class IncomingGoodsController extends Controller
             return redirect()->route('dashboard.transaction.incoming.index')->with('toastSuccess', __('crud.deleted', ['name' => 'Barang Masuk']));
         } catch (\Throwable $th) {
             DB::rollBack();
-            dd($th);
             return redirect()->route('dashboard.transaction.incoming.index', $uuid)->with('toastError', __('crud.error_delete', ['name' => 'Barang Masuk']))->withInput();
         }
     }

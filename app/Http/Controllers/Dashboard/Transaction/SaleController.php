@@ -105,7 +105,6 @@ class SaleController extends Controller
             return redirect()->route('dashboard.transaction.sale.index')->with('toastSuccess', __('crud.deleted', ['name' => 'Transaksi Penjualan']));
         } catch (\Throwable $th) {
             DB::rollBack();
-            dd($th);
             return redirect()->route('dashboard.transaction.sale.index', $uuid)->with('toastError', __('crud.error_delete', ['name' => 'Transaksi Penjualan']))->withInput();
         }
     }
