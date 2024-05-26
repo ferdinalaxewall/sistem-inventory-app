@@ -13,7 +13,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>{{ config('app.name') }} - Sign In</title>
+    <title>{{ config('app.name') }} - Verifikasi Akun</title>
 
     <meta name="description" content="" />
 
@@ -115,60 +115,35 @@
                             </a>
                         </div>
                         <!-- /Logo -->
+                    
                         <div class="text-center">
-                            <h4 class="mb-2">Welcome to {{ config('app.name') }}!👋</h4>
-                            <p class="mb-4">Please sign-in to your account and start the adventure</p>
+                            <h4 class="mb-2">Verifikasi Akun</h4>
+                            <p class="mb-4">Belum menerima email? <a href="{{ route('auth.resend-code', $user) }}" class="text-primary">Kirim ulang</a></p>
                         </div>
 
-                        <form id="formAuthentication" class="mb-3" action="{{ route('auth.store.login') }}" method="POST">
+                        <form id="formAuthentication" class="mb-3" action="{{ route('auth.store.verify-account', $user) }}" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
+                                <label for="email" class="form-label required">Kode Verifikasi</label>
                                 <input
-                                    type="email"
+                                    type="text"
                                     class="form-control @error('email') is-invalid @enderror"
-                                    id="email"
-                                    name="email"
-                                    placeholder="Masukkan Email"
-                                    value="{{ old('email') }}"
+                                    id="verify_code"
+                                    name="verify_code"
+                                    placeholder="Masukkan Kode Verifikasi"
+                                    value="{{ old('verify_code') }}"
                                     autofocus
                                     required />
-                                @error('email')
+                                @error('verify_code')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3 form-password-toggle">
-                                <div class="d-flex justify-content-between">
-                                    <label class="form-label" for="password">Password</label>
-                                    {{-- <a href="auth-forgot-password-basic.html">
-                                        <small>Forgot Password?</small>
-                                    </a> --}}
-                                </div>
-
-                                <div class="input-group input-group-merge">
-                                    <input
-                                        type="password"
-                                        id="password"
-                                        class="form-control"
-                                        name="password"
-                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                        aria-describedby="password" required />
-                                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                                </div>
-                            </div>
                             <div class="mb-3">
-                                <button class="btn btn-primary d-grid w-100" type="submit">Sign In</button>
+                                <button class="btn btn-primary d-grid w-100" type="submit">Verifikasi</button>
                             </div>
                         </form>
-
-                        <p class="text-center">
-                            <span>Belum mempunyai akun?</span>
-                            <a href="{{ route("auth.register") }}">
-                                <span>Daftar disini</span>
-                            </a>
-                        </p>
                     </div>
                 </div>
                 <!-- /Register -->

@@ -45,6 +45,7 @@ class UserService
                 __('crud.created', ['name' => 'User']), 201, $createdUser
             );
         } catch (\Throwable $th) {
+            dd($th);
             return ObjectResponse::error(
                 __('crud.error_create', ['name' => 'User']), 500, $th->getMessage()
             );

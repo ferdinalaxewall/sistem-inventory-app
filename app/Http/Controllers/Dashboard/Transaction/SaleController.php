@@ -72,8 +72,10 @@ class SaleController extends Controller
             DB::commit();
             return redirect()->route('dashboard.transaction.sale.index')->with('toastSuccess', __('crud.created', ['name' => 'Transaksi Penjualan']));
         } catch (ReturnPaymentException $ex) {
+            DB::rollBack();
             return redirect()->route('dashboard.transaction.sale.create')->with('toastError', $ex->getMessage())->withInput();
         } catch (IncorrectStockException $ex) {
+            DB::rollBack();
             return redirect()->route('dashboard.transaction.sale.create')->with('toastError', $ex->getMessage())->withInput();
         } catch (\Throwable $th) {
             DB::rollBack();

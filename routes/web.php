@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\ProfileController;
@@ -37,6 +38,21 @@ Route::group([
 ], function () {
     Route::get('/login', [AuthController::class, 'viewLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'storeLogin'])->name('store.login');
+
+    Route::get('/register', [AuthController::class, 'viewRegister'])->name('register');
+    Route::post('/register', [AuthController::class, 'storeRegister'])->name('store.register');
+
+    Route::get('/verifikasi-akun/{user}', [AuthController::class, 'viewVerifyAccount'])->name('verify-account');
+    Route::post('/verifikasi-akun/{user}', [AuthController::class, 'storeVerifyAccount'])->name('store.verify-account');
+    Route::get('/verifikasi-akun/kirim-ulang-kode/{user}', [AuthController::class, 'resendVerifyCode'])->name('resend-code');
+
+    Route::get('/template-email', function (){
+        $verifyCode = 123123;
+        $user_name = 'Muhamad Ferdinal';
+        $user_id = Str::uuid();
+
+    return view('templates.mail.verify-code', compact('verifyCode', 'user_name', 'user_id'));
+    });
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
