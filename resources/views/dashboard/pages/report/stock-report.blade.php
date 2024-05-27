@@ -7,6 +7,12 @@
 <div class="card">
     <div class="d-flex align-items-center justify-content-between pe-4  ">
         <h5 class="card-header mb-0">Laporan Stok Barang</h5>
+        
+        <div class="d-flex align-items-center gap-2">
+            <a href="{{ route('dashboard.report.stock.export.pdf') }}" class="btn btn-icon btn-danger" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Cetak PDF">
+                <i class="bx bxs-file-pdf"></i>
+            </a>
+        </div>
     </div>
     <div class="table-responsive text-nowrap">
         <table class="table table-hover">

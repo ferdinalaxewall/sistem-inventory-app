@@ -201,6 +201,7 @@ Route::group([
             'as' => 'stock.',
         ], function () {
             Route::get('/', [StockController::class, 'stockReport'])->name('index');
+            Route::get('/export/pdf', [StockController::class, 'exportToPDF'])->name('export.pdf');
         });
 
         Route::group([
@@ -208,6 +209,7 @@ Route::group([
             'as' => 'incoming.',
         ], function () {
             Route::get('/', [ReportIncomingGoodsController::class, 'incomingReport'])->name('index');
+            Route::get('/export/pdf', [ReportIncomingGoodsController::class, 'exportToPDF'])->name('export.pdf');
         });
 
         Route::group([
@@ -215,6 +217,7 @@ Route::group([
             'as' => 'sale.',
         ], function () {
             Route::get('/', [ReportSaleController::class, 'saleReport'])->name('index');
+            Route::get('/export/pdf', [ReportSaleController::class, 'exportToPDF'])->name('export.pdf');
         });
     });
 });
