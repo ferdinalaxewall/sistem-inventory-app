@@ -2,6 +2,7 @@
 
 namespace App\Exports\MasterData;
 
+use App\Models\User;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -9,11 +10,12 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class CustomerExport implements FromCollection, WithHeadings, WithMapping, WithColumnWidths, WithStyles
+class UserExport implements FromCollection, WithHeadings, WithMapping, WithColumnWidths, WithStyles
 {
     public function __construct
     (
-        protected $data
+        protected $data,
+        protected $role
     ) {}
 
     /**
@@ -39,8 +41,8 @@ class CustomerExport implements FromCollection, WithHeadings, WithMapping, WithC
     public function headings(): array
     {
         return [
-            'Kode Pelanggan',
-            'Nama Pelanggan',
+            'Kode ' . ($this->role == User::ADMIN_ROLE ? 'Administrator' : 'Pengguna'),
+            'Nama ' . ($this->role == User::ADMIN_ROLE ? 'Administrator' : 'Pengguna'),
             'Email',
             'Nomor HP',
             'Alamat',

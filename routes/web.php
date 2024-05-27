@@ -85,6 +85,8 @@ Route::group([
                 Route::get('/edit/{uuid}', [AdminController::class, 'edit'])->name('edit');
                 Route::put('/update/{uuid}', [AdminController::class, 'update'])->name('update');
                 Route::delete('/delete/{uuid}', [AdminController::class, 'delete'])->name('delete');
+
+                Route::get('/export/excel', [AdminController::class, 'exportToExcel'])->name('export.excel');
             });
 
             Route::group([
@@ -97,6 +99,8 @@ Route::group([
                 Route::get('/edit/{uuid}', [UserController::class, 'edit'])->name('edit');
                 Route::put('/update/{uuid}', [UserController::class, 'update'])->name('update');
                 Route::delete('/delete/{uuid}', [UserController::class, 'delete'])->name('delete');
+
+                Route::get('/export/excel', [UserController::class, 'exportToExcel'])->name('export.excel');
             });
         });
 

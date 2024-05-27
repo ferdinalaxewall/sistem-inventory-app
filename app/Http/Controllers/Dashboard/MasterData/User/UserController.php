@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard\MasterData\User;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MasterData\UserExport;
 use App\Services\MasterData\UserService;
 use App\Http\Requests\Users\CreateUserRequest;
 use App\Http\Requests\Users\UpdateUserRequest;
@@ -74,5 +76,13 @@ class UserController extends Controller
     {
         $deleteUserResponse = $this->userService->deleteUser($uuid);
         return redirect()->route('dashboard.users.user.index')->with($deleteUserResponse->success ? 'toastSuccess' : 'toastError', $deleteUserResponse->message);
+    }
+
+    public function exportToExcel()
+    {
+        $currentDate = now()->format('Ymd');
+        $data = User::where('role', User::USER_ROLE)->orderBy('code', 'ASC')->get();
+
+        return Excel::download(new UserExport($data, User::USER_ROLE), "{$currentDate}-stockflow-pengguna.xlsx");
     }
 }

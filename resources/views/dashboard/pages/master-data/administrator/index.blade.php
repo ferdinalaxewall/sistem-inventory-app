@@ -7,9 +7,14 @@
 <div class="card">
     <div class="d-flex align-items-center justify-content-between pe-4  ">
         <h5 class="card-header mb-0">Administrator</h5>
-        <a href="{{ route('dashboard.users.administrator.create') }}" class="btn btn-icon btn-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Tambah">
-            <i class="bx bx-plus-circle"></i>
-        </a>
+        <div class="d-flex align-items-center gap-2">
+            <a href="{{ route('dashboard.users.administrator.export.excel') }}" class="btn btn-icon btn-success" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Export Excel">
+                <i class="bx bx-export"></i>
+            </a>
+            <a href="{{ route('dashboard.users.administrator.create') }}" class="btn btn-icon btn-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Tambah">
+                <i class="bx bx-plus-circle"></i>
+            </a>
+        </div>
     </div>
     <div class="table-responsive text-nowrap">
         <table class="table table-hover">
