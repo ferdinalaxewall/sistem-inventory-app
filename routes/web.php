@@ -175,6 +175,8 @@ Route::group([
             Route::get('/create', [IncomingGoodsController::class, 'create'])->name('create');
             Route::post('/', [IncomingGoodsController::class, 'store'])->name('store');
             Route::delete('/delete/{uuid}', [IncomingGoodsController::class, 'delete'])->name('delete');
+
+            Route::get('/export/excel', [IncomingGoodsController::class, 'exportToExcel'])->name('export.excel');
         });
 
         Route::group([
@@ -185,6 +187,8 @@ Route::group([
             Route::get('/create', [SaleController::class, 'create'])->name('create');
             Route::post('/', [SaleController::class, 'store'])->name('store');
             Route::delete('/delete/{uuid}', [SaleController::class, 'delete'])->name('delete');
+            
+            Route::get('/export/excel', [SaleController::class, 'exportToExcel'])->name('export.excel');
         });
     });
 

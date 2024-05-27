@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Dashboard\Transaction;
 
+use App\Models\Item;
+use App\Models\User;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use App\Models\IncomingGoods;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Transaction\IncomingGoodsRequest;
-use App\Models\Item;
-use App\Models\Supplier;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Transaction\IncomingGoodsExport;
+use App\Http\Requests\Transaction\IncomingGoodsRequest;
 
 class IncomingGoodsController extends Controller
 {
@@ -86,5 +89,16 @@ class IncomingGoodsController extends Controller
             DB::rollBack();
             return redirect()->route('dashboard.transaction.incoming.index', $uuid)->with('toastError', __('crud.error_delete', ['name' => 'Barang Masuk']))->withInput();
         }
+    }
+
+    public function exportToExcel()
+    {
+        $currentDate = now()->format('Ymd');
+        $data = IncomingGoods::with('items')->filterByUser()
+            ->when(auth()->user()->role == User::ADMIN_ROLE, function ($query) {
+                $query->orderBy('user_id', 'ASC');
+            })->orderBy('code', 'ASC')->get();
+
+        return Excel::download(new IncomingGoodsExport($data), "{$currentDate}-stockflow-barang-masuk.xlsx");
     }
 }

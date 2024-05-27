@@ -7,9 +7,14 @@
 <div class="card">
     <div class="d-flex align-items-center justify-content-between pe-4  ">
         <h5 class="card-header mb-0">Transaksi Penjualan</h5>
-        <a href="{{ route('dashboard.transaction.sale.create') }}" class="btn btn-icon btn-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Tambah">
-            <i class="bx bx-plus-circle"></i>
-        </a>
+        <div class="d-flex align-items-center gap-2">
+            <a href="{{ route('dashboard.transaction.sale.export.excel') }}" class="btn btn-icon btn-success" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Export Excel">
+                <i class="bx bx-export"></i>
+            </a>
+            <a href="{{ route('dashboard.transaction.sale.create') }}" class="btn btn-icon btn-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Tambah">
+                <i class="bx bx-plus-circle"></i>
+            </a>
+        </div>
     </div>
     <div class="table-responsive text-nowrap">
         <table class="table table-hover">
@@ -30,7 +35,7 @@
                 @foreach($data as $item)
                 <tr>
                     <td>{{ $item->code }}</td>
-                    <td>{{ $item->supplier?->name ?? '-' }}</td>
+                    <td>{{ $item->customer?->name ?? '-' }}</td>
                     <td>
                         <ul class="ps-0 mb-0">
                             @foreach ($item->items as $i)

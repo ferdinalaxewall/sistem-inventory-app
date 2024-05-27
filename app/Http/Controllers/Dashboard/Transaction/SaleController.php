@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Dashboard\Transaction;
 
 use App\Models\Item;
 use App\Models\Sale;
+use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Transaction\SaleExport;
 use App\Exceptions\ReturnPaymentException;
 use App\Exceptions\IncorrectStockException;
 use App\Http\Requests\Transaction\SaleRequest;
@@ -107,5 +110,16 @@ class SaleController extends Controller
             DB::rollBack();
             return redirect()->route('dashboard.transaction.sale.index', $uuid)->with('toastError', __('crud.error_delete', ['name' => 'Transaksi Penjualan']))->withInput();
         }
+    }
+
+    public function exportToExcel()
+    {
+        $currentDate = now()->format('Ymd');
+        $data = Sale::with('items')->filterByUser()
+            ->when(auth()->user()->role == User::ADMIN_ROLE, function ($query) {
+                $query->orderBy('user_id', 'ASC');
+            })->orderBy('code', 'ASC')->get();
+
+        return Excel::download(new SaleExport($data), "{$currentDate}-stockflow-transaksi-penjualan.xlsx");
     }
 }
