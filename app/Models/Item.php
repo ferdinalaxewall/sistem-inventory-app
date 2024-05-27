@@ -18,6 +18,8 @@ class Item extends Model
         'updated_at' => 'datetime'
     ];
 
+    const MIN_STOCK_ALERT = 10;
+
     const UNIQUE_CODE_PREFIX = 'ITM';
 
     public function user()

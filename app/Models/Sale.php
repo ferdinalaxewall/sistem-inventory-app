@@ -32,4 +32,9 @@ class Sale extends Model
     {
         return $this->hasMany(SaleItem::class, 'sale_id', 'uuid');
     }
+
+    public function scopeWhereDateRange($query, $column, $start_date, $end_date)
+    {
+        $query->whereDate($column, '>=', $start_date)->whereDate($column, '<=', $end_date);
+    }
 }

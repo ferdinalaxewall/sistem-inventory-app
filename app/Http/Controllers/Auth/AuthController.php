@@ -71,7 +71,7 @@ class AuthController extends Controller
             if (!$sendVerificationCodeResponse->success) throw new SendVerificationCodeException($sendVerificationCodeResponse->message);
             
             DB::commit();
-            return redirect()->route('auth.verify-account', $createUserResponse->data->uuid)->with('success', __('auth.registered'));
+            return redirect()->route('auth.verify-account', $createUserResponse->data->uuid)->with('toastSuccess', __('auth.registered'));
         } catch (FailedRegisterException $ex) {
             DB::rollBack();
             return redirect()->route('auth.register')->with('toastError', $ex->getMessage())->withInput();

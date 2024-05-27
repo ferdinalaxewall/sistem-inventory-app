@@ -21,7 +21,14 @@
                     <th>Kode</th>
                     <th>Nama Barang</th>
                     <th>Kategori</th>
-                    <th>Dibuat Oleh</th>
+                    @role('admin')
+                        <th>Dibuat Oleh</th>
+                    @endrole
+
+                    @role('pengguna')
+                        <th>HPP</th>
+                        <th>Harga Jual</th>
+                    @endrole
                     <th>Tanggal Dibuat</th>
                     <th class="text-center">Opsi</th>
                 </tr>
@@ -32,7 +39,14 @@
                     <td>{{ $item->code }}</td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->category?->category_name }}</td>
-                    <td>{{ $item->user?->name }}</td>
+                    @role('admin')
+                        <td>{{ $item->user?->name }}</td>
+                    @endrole
+
+                    @role('pengguna')
+                        <td>Rp {{ number_format($item->hpp) }}</td>
+                        <td>Rp {{ number_format($item->selling_price) }}</td>
+                    @endrole
                     <td>{{ $item->created_at?->translatedFormat('d F Y H:i') }}</td>
                     <td>
                         <div class="d-flex flex-wrap align-items-center justify-content-center gap-2">

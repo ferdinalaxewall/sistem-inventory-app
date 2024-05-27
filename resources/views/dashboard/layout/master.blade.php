@@ -114,6 +114,8 @@
     <script src="{{ asset('dashboard/assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
     <script src="{{ asset('dashboard/assets/vendor/libs/iziToast/js/iziToast.min.js') }}"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('dashboard/assets/vendor/libs/chartjs/chartjs.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/vendor/libs/chartjs/charts-chartjs.js') }}"></script>
 
     {{-- Select2 JS --}}
     <script src="{{ asset('dashboard/assets/vendor/libs/select2/js/select2.full.min.js') }}"></script>

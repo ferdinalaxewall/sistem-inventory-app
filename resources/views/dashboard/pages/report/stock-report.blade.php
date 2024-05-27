@@ -20,7 +20,10 @@
                     <th>Jumlah Stok</th>
                     <th>Harga Beli (HPP)</th>
                     <th>Harga Jual</th>
-                    <th>Dibuat Oleh</th>
+
+                    @role('admin')
+                        <th>Dibuat Oleh</th>
+                    @endrole
                 </tr>
             </thead>
             <tbody>
@@ -29,9 +32,12 @@
                     <td>{{ $item->code }}</td>
                     <td>{{ $item->name }}</td>
                     <td>{{ "{$item->stock} {$item->unit}" }}</td>
-                    <td>{{ $item->hpp }}</td>
-                    <td>{{ $item->selling_price }}</td>
-                    <td>{{ $item->user?->name }}</td>
+                    <td>Rp {{ number_format($item->hpp) }}</td>
+                    <td>Rp {{ number_format($item->selling_price) }}</td>
+
+                    @role('admin')
+                        <td>{{ $item->user?->name }}</td>
+                    @endrole
                 </tr>
                 @endforeach
             </tbody>

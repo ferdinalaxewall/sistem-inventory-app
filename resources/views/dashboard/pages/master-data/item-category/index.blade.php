@@ -20,7 +20,9 @@
                 <tr>
                     <th>No.</th>
                     <th>Nama Kategori</th>
-                    <th>Dibuat Oleh</th>
+                    @role('admin')
+                        <th>Dibuat Oleh</th>
+                    @endrole
                     <th>Tanggal Dibuat</th>
                     <th class="text-center">Opsi</th>
                 </tr>
@@ -30,7 +32,9 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->category_name }}</td>
-                    <td>{{ $item->user?->name }}</td>
+                    @role('admin')
+                        <td>{{ $item->user?->name }}</td>
+                    @endrole
                     <td>{{ $item->created_at?->translatedFormat('d F Y H:i') }}</td>
                     <td>
                         <div class="d-flex flex-wrap align-items-center justify-content-center gap-2">
