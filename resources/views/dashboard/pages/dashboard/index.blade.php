@@ -5,7 +5,7 @@
     @role(\App\Models\User::ADMIN_ROLE)
         <div class="row" style="row-gap: 15px;">
             <div class="col-lg-8">
-                <div class="row" style="row-gap: 25px;">
+                <div class="row" style="row-gap: 15px;">
                     <div class="col-md-6">
                         <a href="{{ route('dashboard.users.user.index') }}" class="card card-hover h-100">
                             <div class="card-body">
@@ -116,7 +116,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="card">
-                    <h5 class="card-header">Stok Barang Berdasarkan User</h5>
+                    <h5 class="card-header text-center">Stok Barang Berdasarkan User</h5>
                     <div class="card-body">
                         <canvas id="categoriesChart" class="chartjs" data-height="100"></canvas>
                         <ul class="doughnut-legend d-flex justify-content-around ps-0 mb-2 mt-4 pt-1">
@@ -178,7 +178,7 @@
     @role(\App\Models\User::USER_ROLE)
         <div class="row" style="row-gap: 15px;">
             <div class="col-lg-8">
-                <div class="row" style="row-gap: 25px;">
+                <div class="row" style="row-gap: 15px;">
                     <div class="col-md-6">
                         <a href="{{ route('dashboard.items.item.index') }}" class="card card-hover h-100">
                             <div class="card-body">
@@ -292,7 +292,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="card">
-                    <h5 class="card-header">Stok Barang Berdasarkan Kategori</h5>
+                    <h5 class="card-header text-center">Stok Barang Berdasarkan Kategori</h5>
                     <div class="card-body">
                         <canvas id="categoriesChart" class="chartjs" data-height="100"></canvas>
                         <ul class="doughnut-legend d-flex justify-content-around ps-0 mb-2 mt-4 pt-1">
