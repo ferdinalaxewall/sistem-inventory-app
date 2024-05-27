@@ -113,6 +113,8 @@ Route::group([
                 Route::get('/edit/{uuid}', [ItemController::class, 'edit'])->name('edit');
                 Route::put('/update/{uuid}', [ItemController::class, 'update'])->name('update');
                 Route::delete('/delete/{uuid}', [ItemController::class, 'delete'])->name('delete');
+
+                Route::get('/export/excel', [ItemController::class, 'exportToExcel'])->name('export.excel');
             });
 
             Route::group([
@@ -138,6 +140,8 @@ Route::group([
             Route::get('/edit/{uuid}', [CustomerController::class, 'edit'])->name('edit');
             Route::put('/update/{uuid}', [CustomerController::class, 'update'])->name('update');
             Route::delete('/delete/{uuid}', [CustomerController::class, 'delete'])->name('delete');
+
+            Route::get('/export/excel', [CustomerController::class, 'exportToExcel'])->name('export.excel');
         });
 
         Route::group([
@@ -150,6 +154,8 @@ Route::group([
             Route::get('/edit/{uuid}', [SupplierController::class, 'edit'])->name('edit');
             Route::put('/update/{uuid}', [SupplierController::class, 'update'])->name('update');
             Route::delete('/delete/{uuid}', [SupplierController::class, 'delete'])->name('delete');
+
+            Route::get('/export/excel', [SupplierController::class, 'exportToExcel'])->name('export.excel');
         });
     });
 

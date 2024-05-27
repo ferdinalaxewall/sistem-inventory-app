@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Dashboard\MasterData\Item;
 
 use App\Models\Item;
+use App\Models\User;
 use App\Models\ItemCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MasterData\ItemExport;
 use App\Http\Requests\Item\CreateItemRequest;
 use App\Http\Requests\Item\UpdateItemRequest;
 
@@ -74,5 +77,16 @@ class ItemController extends Controller
         } catch (\Throwable $th) {
             return redirect()->route('dashboard.items.item.edit', $uuid)->with('toastError', __('crud.error_delete', ['name' => 'Barang']))->withInput();
         }
+    }
+
+    public function exportToExcel()
+    {
+        $currentDate = now()->format('Ymd');
+        $data = Item::with('category')->filterByUser()
+            ->when(auth()->user()->role == User::ADMIN_ROLE, function ($query) {
+                $query->orderBy('user_id', 'ASC');
+            })->orderBy('code', 'ASC')->get();
+
+        return Excel::download(new ItemExport($data), "{$currentDate}-stockflow-data-barang.xlsx");
     }
 }

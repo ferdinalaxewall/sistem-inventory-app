@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard\MasterData;
 
+use App\Models\User;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MasterData\SupplierExport;
 use App\Http\Requests\Supplier\SupplierRequest;
 
 class SupplierController extends Controller
@@ -70,5 +73,16 @@ class SupplierController extends Controller
         } catch (\Throwable $th) {
             return redirect()->route('dashboard.supplier.index', $uuid)->with('toastError', __('crud.error_delete', ['name' => 'Supplier']))->withInput();
         }
+    }
+
+    public function exportToExcel()
+    {
+        $currentDate = now()->format('Ymd');
+        $data = Supplier::filterByUser()
+            ->when(auth()->user()->role == User::ADMIN_ROLE, function ($query) {
+                $query->orderBy('user_id', 'ASC');
+            })->orderBy('code', 'ASC')->get();
+
+        return Excel::download(new SupplierExport($data), "{$currentDate}-stockflow-supplier.xlsx");
     }
 }

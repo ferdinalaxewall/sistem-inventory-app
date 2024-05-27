@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard\MasterData;
 
+use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MasterData\CustomerExport;
 use App\Http\Requests\Customer\CustomerRequest;
 
 class CustomerController extends Controller
@@ -70,5 +73,16 @@ class CustomerController extends Controller
         } catch (\Throwable $th) {
             return redirect()->route('dashboard.customer.edit', $uuid)->with('toastError', __('crud.error_delete', ['name' => 'Pelanggan']))->withInput();
         }
+    }
+
+    public function exportToExcel()
+    {
+        $currentDate = now()->format('Ymd');
+        $data = Customer::filterByUser()
+            ->when(auth()->user()->role == User::ADMIN_ROLE, function ($query) {
+                $query->orderBy('user_id', 'ASC');
+            })->orderBy('code', 'ASC')->get();
+
+        return Excel::download(new CustomerExport($data), "{$currentDate}-stockflow-pelanggan.xlsx");
     }
 }
