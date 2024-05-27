@@ -53,6 +53,9 @@
                     <td>{{ $item->created_at?->translatedFormat('d F Y H:i') }}</td>
                     <td>
                         <div class="d-flex flex-wrap align-items-center justify-content-center gap-2">
+                            <a href="{{ route('dashboard.transaction.sale.print.payment-receipt', $item->uuid) }}" class="btn btn-info btn-icon btn-sm" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Cetak Struk Pembayaran">
+                                <i class="bx bxs-file-pdf"></i>
+                            </a>
                             <a href="{{ route('dashboard.transaction.sale.delete', $item->uuid) }}" class="btn btn-danger btn-icon btn-sm delete-confirm" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Hapus">
                                 <i class="bx bx-trash-alt"></i>
                             </a>

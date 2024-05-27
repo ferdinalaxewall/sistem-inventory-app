@@ -7,6 +7,7 @@ use App\Models\Sale;
 use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
@@ -121,5 +122,15 @@ class SaleController extends Controller
             })->orderBy('code', 'ASC')->get();
 
         return Excel::download(new SaleExport($data), "{$currentDate}-stockflow-transaksi-penjualan.xlsx");
+    }
+
+    public function printPaymentReceipt(string $uuid)
+    {
+        $data = Sale::where('uuid', $uuid)->first();
+        if (is_null($data)) return redirect()->route('dashboard.transaction.sale.index')->with('toastError', __('crud.not_found', ['name' => 'Transaksi Penjualan']));
+
+        $pdf = Pdf::loadView('templates.pdf.contents.payment-receipt', compact('data'));
+
+        return $pdf->download("{$data->code}-stockflow-struk-pembayaran.pdf");
     }
 }
