@@ -6,11 +6,11 @@
     <div class="col-12">
         <div class="card mb-4">
             <div class="user-profile-header-banner">
-                <img src="{{ asset('dashboard/assets/img/pages/profile-banner.png') }}" alt="Banner image" class="rounded-top w-100">
+                <img src="{{ asset('dashboard_assets/assets/img/pages/profile-banner.png') }}" alt="Banner image" class="rounded-top w-100">
             </div>
             <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
                 <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
-                    <img src="{{ auth()->user()->getProfileImageURL() }}" onerror="this.src='{{ asset('dashboard/assets/img/avatars/1.png') }}'" alt="Avatar of {{ auth()->user()->name }}" class="d-block h-100 ms-0 ms-sm-4 rounded user-profile-img bg-light shadow-sm" id="avatar-profile">
+                    <img src="{{ auth()->user()->getProfileImageURL() }}" onerror="this.src='{{ asset('dashboard_assets/assets/img/avatars/1.png') }}'" alt="Avatar of {{ auth()->user()->name }}" class="d-block h-100 ms-0 ms-sm-4 rounded user-profile-img bg-light shadow-sm" id="avatar-profile">
                 </div>
                 <div class="flex-grow-1 mt-3 mt-sm-5">
                     <div class="d-flex align-items-md- end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
