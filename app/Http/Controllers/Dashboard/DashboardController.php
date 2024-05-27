@@ -22,15 +22,53 @@ class DashboardController extends Controller
     {
         $data = [];
 
+        // Generate Date Range for Filter Needed
         $dateRange = DateHelper::generateDateRange(
             $request->query('month'),
             $request->query('year')
         );
 
-        if (auth()->user()->role == User::ADMIN_ROLE) {
+        // Global Count Items
+        $data['count_items'] = Item::when(auth()->user()->role == User::USER_ROLE, function ($query) {
+            $query->where('user_id', auth()->user()->uuid);
+        })->count();
+        $data['count_suppliers'] = Supplier::when(auth()->user()->role == User::USER_ROLE, function ($query) {
+            $query->where('user_id', auth()->user()->uuid);
+        })->count();
+        $data['count_customers'] = Customer::when(auth()->user()->role == User::USER_ROLE, function ($query) {
+            $query->where('user_id', auth()->user()->uuid);
+        })->count();
 
+        if (auth()->user()->role == User::ADMIN_ROLE) {
+            // Stock Item Users Statistic
+            $data['graph_categories'] = Item::with('user')
+                ->select(['user_id', DB::raw('SUM(stock) as total_stock')])
+                ->groupBy('user_id')
+                ->get();
+            $data['graph_categories'] = $data['graph_categories']->map(function ($item) use ($data) {
+                $totalStock = $data['graph_categories']->sum('total_stock');
+                $item['user_name'] = $item->user->name;
+                $item['percentage'] = round(((int) $item['total_stock'] / $totalStock) * 100, 1);
+                $item['color'] = RandomGenerator::generateRandomColor();
+
+                return $item;
+            });
+
+            $data['best_items'] = SaleItem::with('item')
+                ->select(['item_id', DB::raw('SUM(quantity) as total_quantity')])
+                ->groupBy('item_id')
+                ->orderBy('total_quantity', 'DESC')
+                ->limit(5)->get();
+
+            // Count Items
+            $data['count_users'] = User::where('role', User::USER_ROLE)->count();
+
+            // Sale Transaction Statistic
+            $users = User::select(['uuid', 'name'])->get();
+            $data['sale_graphs']['series_data'] = $users->map(fn ($item) => $item->sales()->whereDateRange('created_at', $dateRange->start_date, $dateRange->end_date)->count());
+            $data['sale_graphs']['series_categories'] = $users->pluck('name');
         } else {
-            // Item Categories Statistic
+            // Stock Item Categories Statistic
             $data['graph_categories'] = Item::with('category')
                 ->select(['item_category_id', DB::raw('SUM(stock) as total_stock')])
                 ->where('user_id', auth()->user()->uuid)
@@ -46,16 +84,16 @@ class DashboardController extends Controller
             });
 
             // Count Items
-            $data['count_items'] = Item::where('user_id', auth()->user()->uuid)->count();
-            $data['count_suppliers'] = Supplier::where('user_id', auth()->user()->uuid)->count();
-            $data['count_customers'] = Customer::where('user_id', auth()->user()->uuid)->count();
             $data['profits'] = SaleItem::select(DB::raw('SUM((price - hpp) * quantity) as profits'))
                 ->whereHas('sale', fn ($query) => $query->where('user_id', auth()->user()->uuid))
                 ->get()->sum('profits');
+
+            // List Warning Items
             $data['warning_items'] = Item::where('stock', '<', Item::MIN_STOCK_ALERT)
                 ->where('user_id', auth()->user()->uuid)
                 ->get();
             
+            // Sale Transaction Statistic
             $transactions = Sale::select('created_at as date')
                 ->where('user_id', auth()->user()->uuid)
                 ->whereDateRange('created_at', $dateRange->start_date, $dateRange->end_date)

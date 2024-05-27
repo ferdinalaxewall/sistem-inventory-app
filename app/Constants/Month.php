@@ -8,7 +8,7 @@ class Month
         1 => 'Januari',
         2 => 'Februari',
         3 => 'Maret',
-        4 => 'Apri',
+        4 => 'April',
         5 => 'Mei',
         6 => 'Juni',
         7 => 'Juli',

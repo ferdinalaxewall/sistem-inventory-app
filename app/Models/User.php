@@ -4,12 +4,13 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Sale;
 use App\Traits\Models\WithUuid;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use App\Traits\Utilities\WithCodeGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -59,5 +60,10 @@ class User extends Authenticatable
     public function getProfileImageURL()
     {
         return asset('storage/' . self::FOLDER_NAME . '/' . $this->image);
+    }
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class, 'user_id', 'uuid');
     }
 }
