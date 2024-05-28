@@ -143,6 +143,7 @@ class AuthController extends Controller
             
             return ObjectResponse::success(__('auth.verification_code'), 201);
         } catch (\Throwable $th) {
+            dd($th);
             return ObjectResponse::error(__('auth.error_verification_code'), 500);
         }
     }
