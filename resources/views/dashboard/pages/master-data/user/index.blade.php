@@ -27,6 +27,7 @@
                     <th>Nama</th>
                     <th>Email</th>
                     <th>No. Telp</th>
+                    <th>Status Verifikasi</th>
                     <th>Tanggal Dibuat</th>
                     <th class="text-center">Opsi</th>
                 </tr>
@@ -40,6 +41,13 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->phone ?? '-' }}</td>
+                    <td>
+                        @if (!is_null($item->email_verified_at))
+                            <span class="badge bg-success">Terverifikasi</span>
+                        @else
+                            <span class="badge bg-danger">Belum Verifikasi</span>
+                        @endif
+                    </td>
                     <td>{{ $item->created_at?->translatedFormat('d F Y H:i') }}</td>
                     <td>
                         <div class="d-flex flex-wrap align-items-center justify-content-center gap-2">
