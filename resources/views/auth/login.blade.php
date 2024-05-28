@@ -125,7 +125,7 @@
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="app-brand-text demo text-body fw-bold">Sneat</span>
+                                <span class="app-brand-text demo text-body fw-bold">{{ config('app.name') }}</span>
                             </a>
                         </div>
                         <!-- /Logo -->
