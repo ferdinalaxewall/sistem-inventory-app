@@ -14,7 +14,10 @@
             ]) }}" data-type="modal" data-size-modal="sm" data-modal-title="Filter Transaksi Penjualan" class="btn btn-icon btn-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Filter">
                 <i class="bx bx-search-alt"></i>
             </a>
-            <a href="{{ route('dashboard.transaction.sale.export.excel') }}" class="btn btn-icon btn-success" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Export Excel">
+            <a href="{{ route('dashboard.transaction.sale.export.excel', [
+                'start_date' => request()->query('start_date'),
+                'end_date' => request()->query('end_date'),
+            ]) }}" class="btn btn-icon btn-success" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Export Excel">
                 <i class="bx bx-export"></i>
             </a>
             <a href="{{ route('dashboard.transaction.sale.create') }}" class="btn btn-icon btn-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Tambah">

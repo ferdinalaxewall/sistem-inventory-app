@@ -104,6 +104,7 @@ class IncomingGoodsController extends Controller
     {
         $currentDate = now()->format('Ymd');
         $data = IncomingGoods::with('items')->filterByUser()
+            ->whereDateRange('incoming_date', request()->query('start_date'), request()->query('end_date'))
             ->when(auth()->user()->role == User::ADMIN_ROLE, function ($query) {
                 $query->orderBy('user_id', 'ASC');
             })->orderBy('code', 'ASC')->get();
