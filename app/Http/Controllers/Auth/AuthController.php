@@ -140,7 +140,6 @@ class AuthController extends Controller
             ]);
     
             $mail = Mail::to($user->email)->send(new VerificationCodeMail($verificationCode, $user->name, $user->uuid));
-            dd($mail);
             
             return ObjectResponse::success(__('auth.verification_code'), 201);
         } catch (\Throwable $th) {
