@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         \App\Models\User::create([
             'name' => 'Super Admin',
             'code' => (new User)->generateUniqueCode(USER::ADMIN_PREFIX_CODE),
-            'email' => 'admin@stockflow.site',
+            'email' => 'admin@stockflow.fun',
             'phone' => '081122334455',
             'address' => 'Bogor, Indonesia',
             'email_verified_at' => now(),
