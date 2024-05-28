@@ -36,6 +36,6 @@ class ReportIncomingGoodsController extends Controller
         
         $pdf = Pdf::loadView('templates.pdf.contents.incoming-report', compact('data', 'start_date', 'end_date'));
 
-        return $pdf->downlaod("{$currentDate}-stockflow-laporan-barang-masuk.pdf");
+        return $pdf->download("{$currentDate}-stockflow-laporan-barang-masuk.pdf");
     }
 }

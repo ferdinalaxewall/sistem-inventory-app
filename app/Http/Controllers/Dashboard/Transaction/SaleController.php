@@ -141,6 +141,6 @@ class SaleController extends Controller
 
         $pdf = Pdf::loadView('templates.pdf.contents.payment-receipt', compact('data'));
 
-        return $pdf->download("{$data->code}-stockflow-struk-pembayaran.pdf");
+        return $pdf->stream("{$data->code}-stockflow-struk-pembayaran.pdf");
     }
 }

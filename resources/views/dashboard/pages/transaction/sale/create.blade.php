@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center gap-2">
+                    <button type="submit" class="btn btn-primary d-inline-flex align-items-center justify-content-center gap-2">
                         <i class="bx bx-save"></i> Simpan
                     </button>
                 </div>
