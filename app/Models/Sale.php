@@ -35,6 +35,7 @@ class Sale extends Model
 
     public function scopeWhereDateRange($query, $column, $start_date, $end_date)
     {
-        $query->whereDate($column, '>=', $start_date)->whereDate($column, '<=', $end_date);
+        $query->when(!empty($start_date), fn ($q) => $q->whereDate($column, '>=', $start_date))
+            ->when(!empty($end_date), fn ($q) => $q->whereDate($column, '<=', $end_date));
     }
 }

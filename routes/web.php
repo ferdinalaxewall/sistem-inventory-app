@@ -189,6 +189,7 @@ Route::group([
             Route::post('/', [SaleController::class, 'store'])->name('store');
             Route::delete('/delete/{uuid}', [SaleController::class, 'delete'])->name('delete');
             
+            Route::get('/filter', [SaleController::class, 'filter'])->name('filter');
             Route::get('/export/excel', [SaleController::class, 'exportToExcel'])->name('export.excel');
             Route::get('/struk-pembayaran/{uuid}', [SaleController::class, 'printPaymentReceipt'])->name('print.payment-receipt');
         });

@@ -20,8 +20,17 @@ class SaleController extends Controller
 {
     public function index()
     {
-        $data = Sale::filterByUser()->latest()->get();
+        $data = Sale::filterByUser()
+            ->whereDateRange('created_at', request()->query('start_date'), request()->query('end_date'))
+            ->latest()->get();
+            
         return view('dashboard.pages.transaction.sale.index', compact('data'));
+    }
+
+    public function filter()
+    {
+        $action_url = route('dashboard.transaction.sale.index');
+        return view('dashboard.components.filter-date-range', compact('action_url'));
     }
 
     public function create()
