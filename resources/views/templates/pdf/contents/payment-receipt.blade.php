@@ -35,10 +35,10 @@
         </table>
     </div>
 
-    <h2 class="text-center">Struk Pembayaran <br> {{ auth()->user()->name }}</h2>
+    <h2 class="text-center">Struk Pembayaran <br> {{$data->user->name }}</h2>
 
-    @if (!is_null(auth()->user()->address))
-        <p class="text-center">{{ auth()->user()->address }}</p>
+    @if (!is_null($data->user?->address))
+        <p class="text-center">{{ $data->user->address }}</p>
     @endif
 
     <hr>
