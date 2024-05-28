@@ -38,4 +38,10 @@ class IncomingGoods extends Model
     {
         return $this->hasMany(IncomingGoodsItem::class, 'incoming_goods_id', 'uuid');
     }
+
+    public function scopeWhereDateRange($query, $column, $start_date, $end_date)
+    {
+        $query->when(!empty($start_date), fn ($q) => $q->whereDate($column, '>=', $start_date))
+            ->when(!empty($end_date), fn ($q) => $q->whereDate($column, '<=', $end_date));
+    }
 }

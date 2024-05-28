@@ -75,6 +75,10 @@
   </head>
 
   <body>
+    <div class="pre-loader is-load">
+        <div class="circle-loader"></div>
+    </div>
+
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">

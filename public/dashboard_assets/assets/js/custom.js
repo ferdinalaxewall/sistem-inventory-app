@@ -247,8 +247,7 @@ $(document).ready(function () {
             modalDialog.classList.add(sizeClassModal);
 
             // Change Modal Title
-            const modalTitle =
-                event.target.getAttribute("data-modal-title") ?? "Modal Title";
+            const modalTitle = event.target.getAttribute("data-modal-title") ?? "Modal Title";
             myModal.querySelector("#defaultModalTitle").innerText = modalTitle;
 
             // Render Dynamic Modal

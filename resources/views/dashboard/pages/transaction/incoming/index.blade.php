@@ -5,9 +5,15 @@
 <!-- Tabel Barang Masuk -->
 
 <div class="card">
-    <div class="d-flex align-items-center justify-content-between pe-4  ">
+    <div class="d-flex align-items-center flex-wrap justify-content-between pe-4  ">
         <h5 class="card-header mb-0">Barang Masuk</h5>
-        <div class="d-flex align-items-center gap-2">
+        <div class="d-flex align-items-center flex-wrap gap-2">
+            <a href="{{ route('dashboard.transaction.incoming.filter', [
+                'start_date' => request()->query('start_date'),
+                'end_date' => request()->query('end_date'),
+            ]) }}" data-type="modal" data-size-modal="sm" data-modal-title="Filter Barang Masuk" class="btn btn-icon btn-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Filter">
+                <i class="bx bx-search-alt"></i>
+            </a>
             <a href="{{ route('dashboard.transaction.incoming.export.excel') }}" class="btn btn-icon btn-success" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Export Excel">
                 <i class="bx bx-export"></i>
             </a>

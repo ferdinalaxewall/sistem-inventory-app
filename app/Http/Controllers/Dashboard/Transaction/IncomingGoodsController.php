@@ -17,10 +17,19 @@ class IncomingGoodsController extends Controller
 {
     public function index()
     {
-        $data = IncomingGoods::filterByUser()->latest()->get();
+        $data = IncomingGoods::filterByUser()
+            ->whereDateRange('incoming_date', request()->query('start_date'), request()->query('end_date'))
+            ->latest()->get();
+            
         return view('dashboard.pages.transaction.incoming.index', compact('data'));
     }
 
+    public function filter()
+    {
+        $action_url = route('dashboard.transaction.incoming.index');
+        return view('dashboard.components.filter-date-range', compact('action_url'));
+    }
+    
     public function create()
     {
         $suppliers = Supplier::filterByUser()->orderBy('name', 'ASC')->get();
