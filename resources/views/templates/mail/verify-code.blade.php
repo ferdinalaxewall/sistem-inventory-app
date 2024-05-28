@@ -7,6 +7,22 @@
     <meta name="x-apple-disable-message-reformatting">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="Stockflow">
+    <meta itemprop="description" content="Stockflow - Aplikasi Manajemen Inventori & Kasir">
+    
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://stockflow.fun">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Stockflow">
+    <meta property="og:description" content="Stockflow - Aplikasi Manajemen Inventori & Kasir">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Stockflow">
+    <meta name="twitter:description" content="Stockflow - Aplikasi Manajemen Inventori & Kasir">
+
     <style type="text/css">
         body, table, td {
             font-family: Helvetica, Arial, sans-serif !important

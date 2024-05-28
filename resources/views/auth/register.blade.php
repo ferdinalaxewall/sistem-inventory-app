@@ -15,7 +15,20 @@
 
     <title>{{ config('app.name') }} - Register</title>
 
-    <meta name="description" content="" />
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="Stockflow">
+    <meta itemprop="description" content="Stockflow - Aplikasi Manajemen Inventori & Kasir">
+    
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://stockflow.fun">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Stockflow">
+    <meta property="og:description" content="Stockflow - Aplikasi Manajemen Inventori & Kasir">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Stockflow">
+    <meta name="twitter:description" content="Stockflow - Aplikasi Manajemen Inventori & Kasir">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('dashboard_assets/assets/img/favicon/favicon.ic') }}o" />
