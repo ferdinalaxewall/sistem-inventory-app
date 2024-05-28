@@ -49,7 +49,7 @@
             <th>Tanggal</th>
         </tr>
 
-        @foreach ($data as $item)
+        @forelse ($data as $item)
             <tr>
                 <td class="text-center">{{ $loop->iteration }}</td>
                 <td>{{ $item->sale->code }}</td>
@@ -60,6 +60,22 @@
                 <td class="text-center">{{ $item->price }}</td>
                 <td class="text-center">{{ $item->sale->created_at?->translatedFormat('d F Y') }}</td>
             </tr>
-        @endforeach
+        @empty
+            <tr>
+                <td colspan="8" class="text-center">Tidak ada data transaksi penjualan</td>
+            </tr>
+        @endforelse
     </table>
+        
+    @if (!empty($start_date) && !empty($end_date))
+        <i class="block" style="margin-top: 10px; color: #8f8f8f;">*Data diatas diambil berdasarkan rentang tanggal {{ \Carbon\Carbon::parse($start_date)->format('d-m-Y') }} s/d {{ \Carbon\Carbon::parse($end_date)->format('d-m-Y') }} </i>
+    @else
+        @if(!empty($start_date))
+            <i class="block" style="margin-top: 10px; color: #8f8f8f;">*Data diatas diambil dari tanggal {{ \Carbon\Carbon::parse($start_date)->format('d-m-Y') }} </i>
+        @endif
+
+        @if(!empty($end_date))
+            <i class="block" style="margin-top: 10px; color: #8f8f8f;">*Data diatas diambil per tanggal {{ \Carbon\Carbon::parse($end_date)->format('d-m-Y') }} </i>
+        @endif
+    @endif
 @endsection

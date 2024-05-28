@@ -76,6 +76,14 @@
     .page-break {
         page-break-after: always;
     }
+
+    .block {
+        display: block
+    }
+
+    .inline-block {
+        display: inline-block;
+    }
 </style>
 
 @stack('style')

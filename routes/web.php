@@ -213,6 +213,7 @@ Route::group([
         ], function () {
             Route::get('/', [ReportIncomingGoodsController::class, 'incomingReport'])->name('index');
             Route::get('/export/pdf', [ReportIncomingGoodsController::class, 'exportToPDF'])->name('export.pdf');
+            Route::get('/filter', [ReportIncomingGoodsController::class, 'filter'])->name('filter');
         });
 
         Route::group([
@@ -221,6 +222,7 @@ Route::group([
         ], function () {
             Route::get('/', [ReportSaleController::class, 'saleReport'])->name('index');
             Route::get('/export/pdf', [ReportSaleController::class, 'exportToPDF'])->name('export.pdf');
+            Route::get('/filter', [ReportSaleController::class, 'filter'])->name('filter');
         });
     });
 });
