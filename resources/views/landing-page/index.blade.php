@@ -191,6 +191,10 @@
                         <h2 class="hero-sub-title h6 mb-4 pb-1">
                             Kelola inventori bisnis UMKM Anda dalam satu dashboard yang praktis dan mudah digunakan. Bergabunglah dengan <span class="text-primary">{{ config('app.name') }}</span> sekarang dan nikmati kemudahan manajemen bisnis yang lebih efisien
                         </h2>
+
+                        <div class="landing-hero-btn d-inline-block position-relative mb-5">
+                            <a href="{{ route('auth.register') }}" class="btn btn-primary">Daftar Sekarang</a>
+                        </div>
                     </div>
                     <div class="hero-animation-img">
                         <a href="../vertical-menu-template/app-ecommerce-dashboard.html" target="_blank">
