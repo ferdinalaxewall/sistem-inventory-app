@@ -188,6 +188,21 @@
                 <div data-i18n="Laporan Penjualan">Laporan Penjualan</div>
             </a>
         </li>
+
+        @role('admin')
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Pesan</span>
+            </li>
+
+
+            <!-- Layanan Pelanggan -->
+            <li class="menu-item @if(Route::is('dashboard.customer-message.*')) active @endif">
+                <a href="{{ route('dashboard.customer-message.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-message-dots"></i>
+                    <div data-i18n="Layanan Pelanggan">Layanan Pelanggan</div>
+                </a>
+            </li>
+        @endrole
     </ul>
 </aside>
 <!-- / Menu -->

@@ -44,10 +44,11 @@
     <link rel="stylesheet" href="{{ asset('dashboard_assets/assets/vendor/css/rtl/theme-default.css') }}" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('dashboard_assets/assets/css/demo.css') }}" />
     <link rel="stylesheet" href="{{ asset('dashboard_assets/assets/vendor/css/pages/front-page.css') }}" />
+
     <!-- Vendors CSS -->
-    
     <link rel="stylesheet" href="{{ asset('dashboard_assets/assets/vendor/libs/nouislider/nouislider.css') }}" />
     <link rel="stylesheet" href="{{ asset('dashboard_assets/assets/vendor/libs/swiper/swiper.css') }}" />
+    <link rel="stylesheet" href="{{ asset('dashboard_assets/assets/vendor/libs/iziToast/css/iziToast.min.css') }}">
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="{{ asset('dashboard_assets/assets/vendor/css/pages/front-page-landing.css') }}" />
@@ -66,6 +67,12 @@
     body {
         width: 100vw;
         overflow-x: hidden;
+    }
+
+    label.required::after{
+        content: '*';
+        color: red;
+        margin-left: 5px;
     }
 </style>
 
@@ -86,7 +93,7 @@
                     </button>
 
                     <!-- Mobile menu toggle: End-->
-                    <a href="landing-page.html" class="app-brand-link">
+                    <a href="{{ route('home') }}" class="app-brand-link">
                         <span class="app-brand-logo demo">
                             <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <defs>
@@ -508,10 +515,10 @@
         <section id="landingContact" class="section-py bg-body landing-contact">
             <div class="container">
                 <div class="text-center mb-3 pb-1">
-                    <span class="badge bg-label-primary">Contact US</span>
+                    <span class="badge bg-label-primary">Kontak Kami</span>
                 </div>
-                <h3 class="text-center mb-1">Let's work together</h3>
-                <p class="text-center mb-4 mb-lg-5 pb-md-3">Any question or remark? just write us a message</p>
+                <h3 class="text-center mb-2">Hubungi Stockflow</h3>
+                <p class="text-center mb-4 mb-lg-5 pb-md-3">Jangan ragu untuk menghubungi kami jika Anda membutuhkan bantuan atau memiliki pertanyaan. Kami selalu siap membantu!</p>
                 <div class="row gy-4">
                     <div class="col-lg-5">
                         <div class="contact-img-box position-relative border p-2 h-100">
@@ -552,19 +559,29 @@
                                 <p class="mb-4">
                                     Punya pertanyaan atau butuh bantuan? Tim Stockflow siap membantu Anda! Hubungi kami melalui formulir di bawah ini. Kami berkomitmen untuk memberikan dukungan terbaik bagi bisnis Anda.
                                 </p>
-                                <form>
+                                <form action="{{ route('contact.store') }}" method="POST">
+                                    @csrf
                                     <div class="row g-4">
                                         <div class="col-md-6">
-                                            <label class="form-label" for="contact-form-fullname">Nama Lengkap</label>
-                                            <input type="text" class="form-control" id="contact-form-fullname" name="customer_name" placeholder="Masukkan Nama Lengkap Anda" />
+                                            <label class="form-label required" for="contact-form-fullname">Nama Lengkap</label>
+                                            <input type="text" class="form-control @error('customer_name') is-invalid @enderror" id="contact-form-fullname" name="customer_name" placeholder="Masukkan Nama Lengkap Anda" required />
+                                            @error('customer_name')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="form-label" for="contact-form-email">Email</label>
-                                            <input type="text" id="contact-form-email" class="form-control" placeholder="Masukkan Email Anda" />
+                                            <label class="form-label required" for="contact-form-email">Email</label>
+                                            <input type="email" id="contact-form-email" class="form-control @error('customer_email') is-invalid @enderror" name="customer_email" placeholder="Masukkan Email Anda" required />
+                                            @error('customer_email')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="col-12">
-                                            <label class="form-label" for="contact-form-message">Pesan</label>
-                                            <textarea id="contact-form-message" class="form-control" rows="9" placeholder="Masukkan Pesan ..."></textarea>
+                                            <label class="form-label required" for="contact-form-message">Pesan</label>
+                                            <textarea id="contact-form-message" class="form-control @error('message') is-invalid @enderror" rows="9" name="message" placeholder="Masukkan Pesan ..." required></textarea>
+                                            @error('message')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="col-12">
                                             <button type="submit" class="btn btn-primary d-inline-flex align-items-center gap-2">
@@ -593,7 +610,7 @@
             <div class="container">
                 <div class="row gx-0 gy-4 g-md-5">
                     <div class="col-lg-5">
-                        <a href="landing-page.html" class="app-brand-link mb-4">
+                        <a href="{{ route('home') }}" class="app-brand-link mb-4">
                             <span class="app-brand-logo demo">
                                 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <defs>
@@ -632,67 +649,59 @@
                         </a>
 
                         <p class="footer-text footer-logo-description mb-4">
-                            Most developer friendly & highly customisable Admin Dashboard Template.
+                            Manajemen Inventori Lebih Mudah dengan {{ config('app.name') }}!
                         </p>
-
-                        <form class="footer-form">
-                            <label for="footer-email" class="small">Subscribe to newsletter</label>
-                            <div class="d-flex mt-1">
-                                <input type="email" class="form-control rounded-0 rounded-start-bottom rounded-start-top" id="footer-email" placeholder="Your email" />
-                                <button type="submit" class="btn btn-primary shadow-none rounded-0 rounded-end-bottom rounded-end-top">
-                                    Subscribe
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-
-                    {{-- <div class="col-lg-2 col-md-4 col-sm-6">
-                        <h6 class="footer-title mb-4">Demos</h6>
-                        <ul class="list-unstyled">
-                            <li class="mb-3">
-                                <a href="../vertical-menu-template/" target="_blank" class="footer-link">Vertical Layout</a>
-                            </li>
-                            <li class="mb-3">
-                                <a href="../horizontal-menu-template/" target="_blank" class="footer-link">Horizontal Layout</a>
-                            </li>
-                            <li class="mb-3">
-                                <a href="../vertical-menu-template-bordered/" target="_blank" class="footer-link">Bordered Layout</a>
-                            </li>
-                            <li class="mb-3">
-                                <a href="../vertical-menu-template-semi-dark/" target="_blank" class="footer-link">Semi Dark Layout</a>
-                            </li>
-                            <li class="mb-3">
-                                <a href="../vertical-menu-template-dark/" target="_blank" class="footer-link">Dark Layout</a>
-                            </li>
-                        </ul>
                     </div>
 
                     <div class="col-lg-2 col-md-4 col-sm-6">
-                        <h6 class="footer-title mb-4">Pages</h6>
+                        <h6 class="footer-title mb-4">Autentikasi</h6>
                         <ul class="list-unstyled">
                             <li class="mb-3">
-                                <a href="pricing-page.html" class="footer-link">Pricing</a>
+                                <a href="{{ route('auth.login') }}" target="_blank" class="footer-link">Login</a>
                             </li>
                             <li class="mb-3">
-                                <a href="payment-page.html" class="footer-link">Payment<span class="badge rounded bg-primary ms-2 px-2">New</span></a>
-                            </li>
-                            <li class="mb-3">
-                                <a href="checkout-page.html" class="footer-link">Checkout</a>
-                            </li>
-                            <li class="mb-3">
-                                <a href="help-center-landing.html" class="footer-link">Help Center</a>
-                            </li>
-                            <li class="mb-3">
-                                <a href="../vertical-menu-template/auth-login-cover.html" target="_blank" class="footer-link">Login/Register</a>
+                                <a href="{{ route('auth.register') }}" target="_blank" class="footer-link">Registasi</a>
                             </li>
                         </ul>
                     </div>
-                    
-                    <div class="col-lg-3 col-md-4">
-                        <h6 class="footer-title mb-4">Download our app</h6>
-                        <a href="javascript:void(0);" class="d-block footer-link mb-3 pb-2"><img src="../../assets/img/front-pages/landing-page/apple-icon.png" alt="apple icon" /></a>
-                        <a href="javascript:void(0);" class="d-block footer-link"><img src="../../assets/img/front-pages/landing-page/google-play-icon.png" alt="google play icon" /></a>
-                    </div> --}}
+
+                    @if (auth()->check())
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <h6 class="footer-title mb-4">Manajemen</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-3">
+                                    <a href="{{ route('dashboard.items.item.index') }}" class="footer-link">Barang</a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="{{ route('dashboard.supplier.index') }}" class="footer-link">Supplier</a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="{{ route('dashboard.customer.index') }}" class="footer-link">Pelanggan</a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="{{ route('dashboard.transaction.incoming.index') }}" class="footer-link">Restok Barang</a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="{{ route('dashboard.transaction.sale.index') }}" class="footer-link">Transaksi Penjualan</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4">
+                            <h6 class="footer-title mb-4">Laporan</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-3">
+                                    <a href="{{ route('dashboard.report.stock.index') }}" class="footer-link">Stok Barang</a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="{{ route('dashboard.report.incoming.index') }}" class="footer-link">Barang Masuk</a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="{{ route('dashboard.report.sale.index') }}" class="footer-link">Transaksi Penjualan</a>
+                                </li>
+                            </ul>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -713,6 +722,7 @@
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
+    <script src="{{ asset('dashboard_assets/assets/vendor/libs/jquery/jquery.js') }}"></script>
     <script src="{{ asset('dashboard_assets/assets/vendor/libs/popper/popper.js') }}"></script>
     <script src="{{ asset('dashboard_assets/assets/vendor/js/bootstrap.js') }}"></script>
     
@@ -721,12 +731,16 @@
     <!-- Vendors JS -->
     <script src="{{ asset('dashboard_assets/assets/vendor/libs/nouislider/nouislider.js') }}"></script>
     <script src="{{ asset('dashboard_assets/assets/vendor/libs/swiper/swiper.js') }}"></script>
+    <script src="{{ asset('dashboard_assets/assets/vendor/libs/iziToast/js/iziToast.min.js') }}"></script>
 
     <!-- Main JS -->
     <script src="{{ asset('dashboard_assets/assets/js/front-main.js') }}"></script>
+    <script src="{{ asset('dashboard_assets/assets/js/custom.js') }}"></script>
     
     <!-- Page JS -->
     <script src="{{ asset('dashboard_assets/assets/js/front-page-landing.js') }}"></script>
+
+    @include('dashboard.components.notification')
   
 </body>
 

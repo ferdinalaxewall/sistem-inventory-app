@@ -3,9 +3,11 @@
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\LandingPage\MainController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Report\StockController;
+use App\Http\Controllers\Dashboard\CustomerMessageController;
 use App\Http\Controllers\Dashboard\Transaction\SaleController;
 use App\Http\Controllers\Dashboard\Report\ReportSaleController;
 use App\Http\Controllers\Dashboard\MasterData\CustomerController;
@@ -29,9 +31,8 @@ use App\Http\Controllers\Dashboard\MasterData\Item\ItemCategoryController;
 */
 
 
-Route::get('/', function () {
-    return view('landing-page.index');
-});
+Route::get('/', [MainController::class, 'home'])->name('home');
+Route::post('/hubungi-kami', [MainController::class, 'sendCustomerMessage'])->name('contact.store');
 
 Route::group([
     'as' => 'auth.'
@@ -65,6 +66,7 @@ Route::group([
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     Route::get('/profil-saya', [ProfileController::class, 'index'])->name('profile.index');
     Route::post('/profil-saya', [ProfileController::class, 'update'])->name("profile.update");
+    Route::get('/layanan-pelanggan', [CustomerMessageController::class, 'index'])->name('customer-message.index');
 
     Route::group([
         'prefix' => 'master-data'
