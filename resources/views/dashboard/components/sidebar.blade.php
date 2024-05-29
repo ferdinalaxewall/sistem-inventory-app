@@ -69,7 +69,7 @@
         </li>
 
         <li class="menu-item @if(Route::is('dashboard.index')) active @endif">
-            <a href="{{ route('dashboard.index') }}" class="menu-link">
+            <a href="{{ route('home') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-grid-alt"></i>
                 <div data-i18n="Dashboard">Dashboard</div>
             </a>
