@@ -30,7 +30,7 @@ use App\Http\Controllers\Dashboard\MasterData\Item\ItemCategoryController;
 
 
 Route::get('/', function () {
-    return redirect()->route('dashboard.index');
+    return view('landing-page.index');
 });
 
 Route::group([
