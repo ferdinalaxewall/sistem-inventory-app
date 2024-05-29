@@ -130,8 +130,8 @@
                         </div>
                         <!-- /Logo -->
                         <div class="text-center">
-                            <h4 class="mb-2">Welcome to {{ config('app.name') }}!👋</h4>
-                            <p class="mb-4">Please sign-in to your account and start the adventure</p>
+                            <h4 class="mb-2">Selamat Datang 👋</h4>
+                            <p class="mb-4">Silakan masuk ke akun Anda dan mulai petualangan</p>
                         </div>
 
                         <form id="formAuthentication" class="mb-3" action="{{ route('auth.store.login') }}" method="POST">

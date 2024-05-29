@@ -137,8 +137,8 @@
               <!-- /Logo -->
 
               <div class="text-center">
-                  <h4 class="mb-2">Adventure starts here 🚀</h4>
-                  <p class="mb-4">Make your inventory management easy and fun!</p>
+                  <h4 class="mb-2">Petualangan dimulai di sini 🚀</h4>
+                  <p class="mb-4">Jadikan pengelolaan inventori anda mudah dan menyenangkan!</p>
               </div>
 
             <form id="formAuthentication" class="mb-3 row" action="{{ route("auth.store.register") }}" method="POST">
