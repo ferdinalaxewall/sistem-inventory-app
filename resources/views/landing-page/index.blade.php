@@ -383,7 +383,7 @@
                                 <img src="{{ asset('dashboard_assets/assets/img/front-pages/icons/single-man.png') }}" class="position-absolute card-img-position bottom-0 start-50 scaleX-n1-rtl" alt="human image" />
                             </div>
                             <div class="card-body border border-top-0 border-label-success text-center">
-                                <h5 class="card-title mb-0">Subhan</h5>
+                                <h5 class="card-title mb-0">M Subhan Mubarok T</h5>
                                 <p class="text-muted mb-0">Conten Creation</p>
                             </div>
                         </div>
