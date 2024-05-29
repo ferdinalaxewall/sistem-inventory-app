@@ -496,11 +496,11 @@
 
                             <div class="card accordion-item">
                                 <h2 class="accordion-header" id="headingSix">
-                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionFive" aria-expanded="false" aria-controls="accordionFive">
+                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionSix" aria-expanded="false" aria-controls="headingSix">
                                         Bagaimana cara mengakses laporan di Stockflow?
                                     </button>
                                 </h2>
-                                <div id="accordionFive" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                                <div id="accordionSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         Anda dapat mengakses laporan stok barang, restok, dan transaksi penjualan melalui dashboard Stockflow. Laporan ini memberikan insight yang jelas dan akurat untuk membantu pengambilan keputusan bisnis yang lebih baik.
                                     </div>
@@ -509,11 +509,11 @@
 
                             <div class="card accordion-item">
                                 <h2 class="accordion-header" id="headingSeven">
-                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionFive" aria-expanded="false" aria-controls="accordionFive">
+                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionSeven" aria-expanded="false" aria-controls="headingSeven">
                                         Apakah ada dukungan pelanggan jika saya mengalami masalah?
                                     </button>
                                 </h2>
-                                <div id="accordionFive" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+                                <div id="accordionSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         Ya, kami menyediakan dukungan pelanggan yang siap membantu Anda. Anda dapat menghubungi tim dukungan kami melalui email
                                     </div>
