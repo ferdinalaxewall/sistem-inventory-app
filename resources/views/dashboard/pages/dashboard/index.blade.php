@@ -11,7 +11,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <div class="card-info">
-                                        <p class="card-text mb-2">Jumlah Pelanggan</p>
+                                        <p class="card-text mb-2">Jumlah Pengguna</p>
                                         <div class="d-flex align-items-end mb-2">
                                             <h4 class="card-title mb-0 me-2">{{ $data['count_users'] }}</h4>
                                         </div>
@@ -119,7 +119,7 @@
                     <h5 class="card-header text-center">Stok Barang Berdasarkan User</h5>
                     <div class="card-body">
                         <canvas id="categoriesChart" class="chartjs" data-height="100"></canvas>
-                        <ul class="doughnut-legend d-flex justify-content-around ps-0 mb-2 mt-4 pt-1">
+                        <ul class="doughnut-legend d-flex justify-content-around ps-0 mb-2 mt-4 pt-1 flex-wrap gap-2">
                             @foreach ($data['graph_categories'] as $item)
                                 <li class="ct-series-0 d-flex flex-column">
                                     <h5 class="mb-0">{{ $item->user_name }}</h5>
