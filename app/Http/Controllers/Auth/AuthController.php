@@ -35,10 +35,11 @@ class AuthController extends Controller
         $requestDTO = $request->validated();
 
         try {
-            if (Auth::attempt($requestDTO)) {
-                $user = User::where('email', $requestDTO['email'])->isActive()->first();
-                if (is_null($user)) return redirect()->route('auth.login')->with('toastError', __('auth.not_active'));
+            $user = User::where('email', $requestDTO['email'])->first();
+            if (is_null($user)) return redirect(route('auth.login'))->with('toastError', 'Email tidak terdaftar!');
+            if (is_null($user->email_verified_at)) return redirect(route('auth.login'))->with('toastError', __('auth.not_active'));
 
+            if (Auth::attempt($requestDTO)) {
                 request()->session()->regenerate();
                 return redirect()->route('dashboard.index')->with('toastSuccess', __('auth.success_login'));
             }
