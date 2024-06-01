@@ -1,0 +1,2 @@
+Untuk cara instalasi project bisa kunjungi Github Repository:
+https://github.com/ferdinalaxewall/sistem-inventory-app

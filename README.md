@@ -7,7 +7,7 @@ Stockflow adalah sebuauh aplikasi sistem manajamen inventori berbasis website ya
 - Akun Google SMTP/Mailtrap SMTP
     - [Link Tutorial Google SMTP](https://divisidev.com/post/laravel-gmail-smtp)
     - [Link Tutorial Mailtrap SMTP](https://www.giuseppemaccario.com/how-to-send-emails-in-laravel-using-mailtrap/)
-    
+
 ## Instalasi Aplikasi Stockflow
 - Silahkan ekstrak file project .zip atau clone project menggunakan perintah `git clone https://github.com/ferdinalaxewall/sistem-inventory-app.git`
 - Buat sebuah envinronment variable file dengan meng-copy .env.example file `cp .env.example .env`
@@ -32,7 +32,7 @@ DB_PASSWORD=
 - DB_HOST = 127.0.0.1/localhost atau sesuaikan dengan host database anda
 - DB_PORT = 3306 atau sesuaikan dengan port database anda
 - DB_DATABASE = stockflow atau sesuaikan dengan nama database anda
-- DB_USERNAMW = root atau sesuaikan dengan username database anda
+- DB_USERNAME = root atau sesuaikan dengan username database anda
 - DB_DATABASE = "" atau sesuaikan dengan password database anda
 
 
