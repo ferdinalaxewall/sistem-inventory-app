@@ -3,10 +3,12 @@ Stockflow adalah sebuauh aplikasi sistem manajamen inventori berbasis website ya
 
 ## Application Requirement
 - PHP versi 8.2 atau diatasnya. [Link Download PHP 8.2](https://windows.php.net/download#php-8.2)
+- Composer. [Link Download Composer](https://getcomposer.org/Composer-Setup.exe)
 - Database MySQL. [Link Download MySQL Server](https://dev.mysql.com/downloads/mysql/)
 - Akun Google SMTP/Mailtrap SMTP
     - [Link Tutorial Google SMTP](https://divisidev.com/post/laravel-gmail-smtp)
     - [Link Tutorial Mailtrap SMTP](https://www.giuseppemaccario.com/how-to-send-emails-in-laravel-using-mailtrap/)
+
 
 ## Instalasi Aplikasi Stockflow
 - Silahkan ekstrak file project .zip atau clone project menggunakan perintah `git clone https://github.com/ferdinalaxewall/sistem-inventory-app.git`
