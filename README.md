@@ -70,3 +70,9 @@ Silahkan ubah konfigurasi SMPT pada file `.env`, ada beberapa Channel SMTP yang 
     - Silahkan isi MAIL_USERNAME, MAIL_PASSWORD, dan MAIL_FROM_ADDRESS sesuai dengan akun [Mailtrap](https://mailtrap.io) anda
     - Untuk melakukan konfigurasi SMTP anda perlu menggunakan "Google Sandi Aplikasi", bisa lihat artikel ini untuk generate sandi aplikasi nya. [Lihat Tutorial](https://www.giuseppemaccario.com/how-to-send-emails-in-laravel-using-mailtrap/)
 
+
+## Administrator
+Untuk default akun admin bisa menggunakan data:
+- Email: admin@stockflow.fun
+- Password: password
+
