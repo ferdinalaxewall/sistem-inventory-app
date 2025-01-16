@@ -13,13 +13,13 @@
     <!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="Stockflow">
     <meta itemprop="description" content="Stockflow - Aplikasi Manajemen Inventori & Kasir">
-    
+
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://stockflow.fun">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Stockflow">
     <meta property="og:description" content="Stockflow - Aplikasi Manajemen Inventori & Kasir">
-    
+
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Stockflow">
@@ -27,7 +27,7 @@
 
     <!-- Canonical SEO -->
     <link rel="canonical" href="https://themeselection.com/item/sneat-dashboard-pro-bootstrap/">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('dashboard_assets/assets/img/favicon/favicon.ico') }}" />
 
@@ -36,7 +36,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-    
+
     <link rel="stylesheet" href="{{ asset('dashboard_assets/assets/vendor/fonts/boxicons.css') }}" />
 
     <!-- Core CSS -->
@@ -60,7 +60,7 @@
     {{-- <script src="{{ asset('dashboard_assets/assets/vendor/js/template-customizer.js') }}"></script> --}}
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('dashboard_assets/assets/js/front-config.js') }}"></script>
-    
+
 </head>
 
 <style>
@@ -727,9 +727,6 @@
                     <span class="footer-text">© {{ now()->year }}</span>
                     <a href="https://themeselection.com" target="_blank" class="fw-medium text-white footer-link">{{ config('app.name') }}</a>
                 </div>
-                <div>
-                    Kelompok 43 <span class="d-inline-block mx-2">-</span> Universitas Bina Sarana Informatika
-                </div>
             </div>
         </div>
     </footer>
@@ -740,7 +737,7 @@
     <script src="{{ asset('dashboard_assets/assets/vendor/libs/jquery/jquery.js') }}"></script>
     <script src="{{ asset('dashboard_assets/assets/vendor/libs/popper/popper.js') }}"></script>
     <script src="{{ asset('dashboard_assets/assets/vendor/js/bootstrap.js') }}"></script>
-    
+
     <!-- endbuild -->
 
     <!-- Vendors JS -->
@@ -751,15 +748,14 @@
     <!-- Main JS -->
     <script src="{{ asset('dashboard_assets/assets/js/front-main.js') }}"></script>
     <script src="{{ asset('dashboard_assets/assets/js/custom.js') }}"></script>
-    
+
     <!-- Page JS -->
     <script src="{{ asset('dashboard_assets/assets/js/front-page-landing.js') }}"></script>
 
     @include('dashboard.components.notification')
-  
+
 </body>
 
 </html>
 
 <!-- beautify ignore:end -->
-

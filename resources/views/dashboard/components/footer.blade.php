@@ -4,9 +4,5 @@
       <div class="mb-2 mb-md-0">
         Copyright © {{ now()->year }} {{ config('app.name') }}
       </div>
-
-      <div class="">
-        <strong>Kelompok 43 - Universitas Bina Sarana Informatika</strong>
-      </div>
     </div>
 </footer>
