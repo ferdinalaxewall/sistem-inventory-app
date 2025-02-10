@@ -69,7 +69,7 @@
         </li>
 
         <li class="menu-item @if(Route::is('dashboard.index')) active @endif">
-            <a href="{{ route('home') }}" class="menu-link">
+            <a href="{{ route('dashboard.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-grid-alt"></i>
                 <div data-i18n="Dashboard">Dashboard</div>
             </a>
@@ -78,7 +78,7 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Master Data</span>
         </li>
-        
+
         @role('admin')
         <!-- Users -->
         <li class="menu-item @if(Route::is('dashboard.users.*')) active open @endif">
@@ -102,7 +102,7 @@
             </ul>
         </li>
         @endrole
-        
+
         <!-- Barang -->
         <li class="menu-item @if(Route::is('dashboard.items.*')) active open @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -124,7 +124,7 @@
                 </li>
             </ul>
         </li>
-        
+
         <!-- Supplier -->
         <li class="menu-item @if(Route::is('dashboard.supplier.*')) active @endif">
             <a href="{{ route('dashboard.supplier.index') }}" class="menu-link">
@@ -132,7 +132,7 @@
                 <div data-i18n="Supplier">Supplier</div>
             </a>
         </li>
-        
+
         <!-- Pelanggan -->
         <li class="menu-item @if(Route::is('dashboard.customer.*')) active @endif">
             <a href="{{ route('dashboard.customer.index') }}" class="menu-link">
@@ -144,7 +144,7 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Transaksi</span>
         </li>
-        
+
         <!-- Barang Masuk -->
         <li class="menu-item @if(Route::is('dashboard.transaction.incoming.*')) active @endif">
             <a href="{{ route('dashboard.transaction.incoming.index') }}" class="menu-link">
@@ -164,7 +164,7 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Laporan</span>
         </li>
-        
+
         <!-- Stok Barang -->
         <li class="menu-item @if(Route::is('dashboard.report.stock.*')) active @endif">
             <a href="{{ route('dashboard.report.stock.index') }}" class="menu-link">
