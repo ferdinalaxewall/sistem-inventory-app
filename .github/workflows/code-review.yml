@@ -25,8 +25,11 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Fetch base branch
-        run: git fetch origin ${{ github.base_ref }}
+      - name: Fetch all remotes
+        run: |
+          git fetch origin +refs/heads/${{ github.base_ref }}:refs/remotes/origin/${{ github.base_ref }}
+          echo "Base branch: origin/${{ github.base_ref }}"
+          git log --oneline -3 origin/${{ github.base_ref }}
 
       - name: Setup larasense-limbo
         uses: Mattel-Limbo/larasense-limbo/action@master
@@ -57,7 +60,7 @@ jobs:
         run: |
           larasense-limbo analyze \
             --base origin/${{ github.base_ref }} \
-            --head ${{ github.sha }} \
+            --head HEAD \
             --format github \
             --github-pr ${{ github.repository }}#${{ github.event.pull_request.number }}
 
@@ -70,7 +73,7 @@ jobs:
           echo "Generating and applying fixes..."
           larasense-limbo analyze \
             --base origin/${{ github.base_ref }} \
-            --head ${{ github.sha }} \
+            --head HEAD \
             --fix --apply --yes || true
 
       - name: Commit and push fixes
