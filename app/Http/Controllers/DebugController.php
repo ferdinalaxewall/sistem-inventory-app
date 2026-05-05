@@ -178,8 +178,8 @@ class DebugController extends Controller
         $targetUserId = $request->input('user_id');
 
         // Mass Assignment: updating role without validation
-        $user = \App\Models\User::find($targetUserId);
-        $user->update($request->all()); // Can set role=admin
+        $user = \App\Models\User::findOrFail($targetUserId);
+        $user->update($request->only(['name', 'email']));
 
         // Logging credentials in plaintext
         Log::channel('daily')->info("Impersonation: target={$targetUserId}, by=" . json_encode($request->all()));
