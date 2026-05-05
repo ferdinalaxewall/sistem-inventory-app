@@ -25,6 +25,8 @@ jobs:
 
       - name: Setup larasense-limbo
         uses: Mattel-Limbo/larasense-limbo/action@master
+        with:
+          version: "0.5.7"
 
       - name: Verify secrets
         env:
