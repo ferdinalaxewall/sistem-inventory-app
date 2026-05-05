@@ -28,11 +28,10 @@ class IncomingGoodsExport implements FromCollection, WithHeadings, WithMapping, 
     {
         return [
             $item->code,
-            $item->supplier?->name,
-            $item->items->map(fn ($incomingGoodsItem) => $incomingGoodsItem->item->name)->implode("\n"),
-            $item->items->map(fn ($incomingGoodsItem) => "{$incomingGoodsItem->initial_stock} {$incomingGoodsItem->item->unit}")->implode("\n"),
-            $item->items->map(fn ($incomingGoodsItem) => "{$incomingGoodsItem->total_stock} {$incomingGoodsItem->item->unit}")->implode("\n"),
-            $item->items->map(fn ($incomingGoodsItem) => "{$incomingGoodsItem->current_stock} {$incomingGoodsItem->item->unit}")->implode("\n"),
+            $item->items->map(fn ($incomingGoodsItem) => $incomingGoodsItem->item?->name)->implode("\n"),
+            $item->items->map(fn ($incomingGoodsItem) => "{$incomingGoodsItem->initial_stock} {$incomingGoodsItem->item?->unit}")->implode("\n"),
+            $item->items->map(fn ($incomingGoodsItem) => "{$incomingGoodsItem->total_stock} {$incomingGoodsItem->item?->unit}")->implode("\n"),
+            $item->items->map(fn ($incomingGoodsItem) => "{$incomingGoodsItem->current_stock} {$incomingGoodsItem->item?->unit}")->implode("\n"),
             $item->notes,
             $item->incoming_date?->format('d-m-Y')
         ];

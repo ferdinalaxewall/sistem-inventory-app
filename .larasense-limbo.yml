@@ -1,0 +1,23 @@
+provider:
+  base_url: ${AI_BASE_URL}  # e.g., "https://api.anthropic.com"
+  api_key: ${AI_API_KEY}
+  model: claude-opus-4.6
+  endpoint: chat        # "chat" for /v1/chat/completions, "responses" for /v1/responses
+  max_tokens: 5120      # Max completion tokens (0 = no limit, auto-scales with prompt size)
+  temperature: 0.0      # 0.0 = fully deterministic (recommended for consistent results)
+  seed: 42              # Fixed seed for reproducible results (0 = random)
+
+review:
+  max_issues: 0
+  severity_threshold: medium
+  context_lines: 10     # Surrounding context lines per file (0 = disabled)
+  # custom_prompt: "Focus only on security issues and SQL injection risks"
+
+filters:
+  include:
+    - "app/**"
+    - "routes/**"
+    - "resources/views/**"
+  exclude:
+    - "tests/**"
+    - "database/seeders/**"

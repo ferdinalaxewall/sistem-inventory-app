@@ -29,8 +29,8 @@ class SaleExport implements FromCollection, WithHeadings, WithMapping, WithColum
         return [
             $item->code,
             $item->customer?->name,
-            $item->items->map(fn ($saleItem) => $saleItem->item->name)->implode("\n"),
-            $item->items->map(fn ($saleItem) => "{$saleItem->quantity} {$saleItem->item->unit}")->implode("\n"),
+            $item->items->map(fn ($saleItem) => $saleItem->item?->name)->implode("\n"),
+            $item->items->map(fn ($saleItem) => "{$saleItem->quantity} {$saleItem->item?->unit}")->implode("\n"),
             $item->items->map(fn ($saleItem) => $saleItem->hpp)->implode("\n"),
             $item->items->map(fn ($saleItem) => $saleItem->price)->implode("\n"),
             $item->subtotal,
