@@ -32,11 +32,11 @@ jobs:
           AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
         run: |
           if [ -z "$AI_BASE_URL" ]; then
-            echo "::error::AI_BASE_URL secret is empty or not set"
+            echo "::error::AI_BASE_URL secret is empty or not set (e.g., https://api.anthropic.com)"
             exit 1
           fi
           if [ -z "$AI_API_KEY" ]; then
-            echo "::error::AI_API_KEY secret is empty or not set"
+            echo "::error::AI_API_KEY secret is empty or not set (e.g., XXXX-XXXXXXXXXXXXXXXX)"
             exit 1
           fi
           echo "AI_BASE_URL is set (${#AI_BASE_URL} chars)"
