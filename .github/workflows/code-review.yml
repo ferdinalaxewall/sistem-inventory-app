@@ -15,13 +15,15 @@ jobs:
     name: Larasense Limbo
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
 
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup larasense-limbo
         uses: Mattel-Limbo/larasense-limbo/action@master
@@ -44,22 +46,6 @@ jobs:
           echo "AI_BASE_URL is set (${#AI_BASE_URL} chars)"
           echo "AI_API_KEY is set (${#AI_API_KEY} chars)"
 
-      - name: Verify secrets
-        env:
-          AI_API_KEY: ${{ secrets.AI_API_KEY }}
-          AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
-        run: |
-          if [ -z "$AI_BASE_URL" ]; then
-            echo "::error::AI_BASE_URL secret is empty or not set (e.g., https://api.anthropic.com)"
-            exit 1
-          fi
-          if [ -z "$AI_API_KEY" ]; then
-            echo "::error::AI_API_KEY secret is empty or not set (e.g., XXXX-XXXXXXXXXXXXXXXX)"
-            exit 1
-          fi
-          echo "AI_BASE_URL is set (${#AI_BASE_URL} chars)"
-          echo "AI_API_KEY is set (${#AI_API_KEY} chars)"
-
       - name: Run AI Code Review
         env:
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
@@ -71,3 +57,29 @@ jobs:
             --head ${{ github.sha }} \
             --format github \
             --github-pr ${{ github.repository }}#${{ github.event.pull_request.number }}
+
+      - name: Auto Fix
+        if: always()
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
+        run: |
+          echo "Generating and applying fixes..."
+          larasense-limbo analyze \
+            --base origin/${{ github.base_ref }} \
+            --head ${{ github.sha }} \
+            --fix --apply --yes || true
+
+      - name: Commit and push fixes
+        if: always()
+        run: |
+          git config user.name "larasense-limbo[bot]"
+          git config user.email "bot@larasense-limbo.dev"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No fixes to commit"
+          else
+            git commit -m "fix: apply AI-suggested code improvements [larasense-limbo]"
+            git push
+            echo "✅ Fixes committed and pushed to PR branch"
+          fi
