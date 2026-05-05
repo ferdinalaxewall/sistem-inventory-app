@@ -26,6 +26,22 @@ jobs:
       - name: Setup larasense-limbo
         uses: Mattel-Limbo/larasense-limbo/action@master
 
+      - name: Verify secrets
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
+        run: |
+          if [ -z "$AI_BASE_URL" ]; then
+            echo "::error::AI_BASE_URL secret is empty or not set"
+            exit 1
+          fi
+          if [ -z "$AI_API_KEY" ]; then
+            echo "::error::AI_API_KEY secret is empty or not set"
+            exit 1
+          fi
+          echo "AI_BASE_URL is set (${#AI_BASE_URL} chars)"
+          echo "AI_API_KEY is set (${#AI_API_KEY} chars)"
+
       - name: Run AI Code Review
         env:
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
