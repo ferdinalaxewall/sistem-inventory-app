@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup larasense-limbo
-        uses: Mattel-Limbo/larasense-limbo/action@main
+        uses: Mattel-Limbo/larasense-limbo/action@master
 
       - name: Run AI Code Review
         env:
